@@ -11,40 +11,52 @@ export const SponsoredCarousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setOffset(prev => (prev + 1) % (sponsored.length * 200));
-    }, 3000);
+      setOffset(prev => prev + 1);
+    }, 30);
     
     return () => clearInterval(interval);
-  }, [sponsored.length]);
+  }, []);
 
   return (
-    <div className="w-full overflow-hidden bg-card/50 py-6 border-y border-border">
-      <div className="mb-3 text-center">
-        <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+    <div className="w-full overflow-hidden bg-card/50 py-6 md:py-8 border-y border-border">
+      <div className="mb-4 text-center px-4">
+        <h3 className="text-sm md:text-base font-semibold text-muted-foreground uppercase tracking-wide">
           Établissements en vedette
         </h3>
       </div>
       
       <div className="relative">
         <div 
-          className="flex gap-4 transition-transform duration-1000 ease-linear"
-          style={{ transform: `translateX(-${offset}px)` }}
+          className="flex gap-4"
+          style={{ 
+            transform: `translateX(-${offset}px)`,
+            transition: 'none'
+          }}
         >
-          {[...sponsored, ...sponsored, ...sponsored].map((acc, idx) => (
+          {[...sponsored, ...sponsored, ...sponsored, ...sponsored].map((acc, idx) => (
             <div
               key={`${acc.id}-${idx}`}
-              className="flex-shrink-0 w-64 bg-card rounded-lg p-4 shadow-soft border border-border"
+              className="flex-shrink-0 w-64 md:w-72 bg-card rounded-lg overflow-hidden shadow-soft border border-border"
             >
-              <div className="flex items-start justify-between mb-2">
-                <h4 className="font-bold text-sm text-foreground">{acc.name}</h4>
-                <Badge variant="secondary" className="text-xs">
-                  {t('sponsored')}
-                </Badge>
+              <div className="relative h-32 md:h-40">
+                <img 
+                  src={acc.image} 
+                  alt={acc.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <p className="text-xs text-muted-foreground">{acc.city}</p>
-              <p className="text-lg font-bold text-primary mt-2">
-                {new Intl.NumberFormat('fr-GN').format(acc.price)} GNF
-              </p>
+              <div className="p-3 md:p-4">
+                <div className="flex items-start justify-between mb-2">
+                  <h4 className="font-bold text-sm md:text-base text-foreground line-clamp-1">{acc.name}</h4>
+                  <Badge variant="secondary" className="text-xs shrink-0 ml-2">
+                    {t('sponsored')}
+                  </Badge>
+                </div>
+                <p className="text-xs md:text-sm text-muted-foreground mb-2">{acc.city}</p>
+                <p className="text-base md:text-lg font-bold text-primary">
+                  {new Intl.NumberFormat('fr-GN').format(acc.price)} GNF
+                </p>
+              </div>
             </div>
           ))}
         </div>

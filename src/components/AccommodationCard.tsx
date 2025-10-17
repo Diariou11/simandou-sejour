@@ -18,6 +18,11 @@ export const AccommodationCard = ({ accommodation }: AccommodationCardProps) => 
   return (
     <Card className="overflow-hidden shadow-medium hover:shadow-strong transition-smooth group">
       <div className="relative h-48 bg-muted overflow-hidden">
+        <img 
+          src={accommodation.image} 
+          alt={accommodation.name}
+          className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
+        />
         <div className="absolute inset-0 bg-gradient-hero opacity-20" />
         {accommodation.sponsored && (
           <Badge className="absolute top-3 right-3 bg-secondary text-secondary-foreground">
@@ -32,38 +37,38 @@ export const AccommodationCard = ({ accommodation }: AccommodationCardProps) => 
         )}
       </div>
       
-      <div className="p-4 space-y-3">
+      <div className="p-3 md:p-4 space-y-2 md:space-y-3">
         <div>
-          <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-smooth">
+          <h3 className="font-bold text-base md:text-lg text-foreground group-hover:text-primary transition-smooth line-clamp-1">
             {accommodation.name}
           </h3>
-          <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
-            <MapPin className="h-3 w-3" />
-            {accommodation.city}, {accommodation.region}
+          <div className="flex items-center gap-1 text-xs md:text-sm text-muted-foreground mt-1">
+            <MapPin className="h-3 w-3 shrink-0" />
+            <span className="truncate">{accommodation.city}, {accommodation.region}</span>
           </div>
         </div>
         
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 text-sm">
-            <Star className="h-4 w-4 fill-secondary text-secondary" />
+          <div className="flex items-center gap-1 text-xs md:text-sm">
+            <Star className="h-3 md:h-4 w-3 md:w-4 fill-secondary text-secondary" />
             <span className="font-semibold">{accommodation.rating}</span>
           </div>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-xs md:text-sm text-muted-foreground">
             ({accommodation.reviews} avis)
           </span>
         </div>
         
         <div className="pt-2 border-t border-border">
-          <div className="flex items-end justify-between">
-            <div>
-              <p className="text-2xl font-bold text-primary">
-                {formattedPrice} <span className="text-sm font-normal text-muted-foreground">GNF</span>
+          <div className="flex items-end justify-between gap-2">
+            <div className="min-w-0">
+              <p className="text-lg md:text-2xl font-bold text-primary truncate">
+                {formattedPrice} <span className="text-xs md:text-sm font-normal text-muted-foreground">GNF</span>
               </p>
               <p className="text-xs text-muted-foreground">{t('perNight')}</p>
             </div>
             
-            <Link to={`/accommodation/${accommodation.id}`}>
-              <Button size="sm" className="bg-primary hover:bg-primary/90">
+            <Link to={`/accommodation/${accommodation.id}`} className="shrink-0">
+              <Button size="sm" className="bg-primary hover:bg-primary/90 text-xs md:text-sm h-8 md:h-9 px-3 md:px-4">
                 {t('bookNow')}
               </Button>
             </Link>
