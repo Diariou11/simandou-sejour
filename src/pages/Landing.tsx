@@ -60,7 +60,7 @@ export default function Landing() {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl mx-auto animate-slide-up">
-            <Link to="/search" className="w-full">
+            <Link to="/client-login" className="w-full">
               <Button 
                 size="lg" 
                 className="w-full h-12 md:h-14 text-base md:text-lg bg-primary hover:bg-primary/90 shadow-medium"
@@ -69,7 +69,7 @@ export default function Landing() {
               </Button>
             </Link>
             
-            <Link to="/host-dashboard" className="w-full">
+            <Link to="/host-login" className="w-full">
               <Button 
                 size="lg" 
                 variant="secondary"
@@ -154,13 +154,13 @@ export default function Landing() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
-            <Link to="/search" className="w-full sm:w-auto">
+            <Link to="/client-login" className="w-full sm:w-auto">
               <Button size="lg" className="w-full sm:w-auto bg-card text-foreground hover:bg-card/90 shadow-medium">
                 {t('exploreOffers')}
               </Button>
             </Link>
             
-            <Link to="/host-dashboard" className="w-full sm:w-auto">
+            <Link to="/host-login" className="w-full sm:w-auto">
               <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-2 border-card text-primary-foreground hover:bg-card/10 shadow-medium">
                 {t('manageProperty')}
               </Button>
