@@ -10,6 +10,10 @@ import Search from "./pages/Search";
 import AccommodationDetail from "./pages/AccommodationDetail";
 import Booking from "./pages/Booking";
 import HostDashboard from "./pages/HostDashboard";
+import HostCalendar from "./pages/HostCalendar";
+import HostPromotions from "./pages/HostPromotions";
+import HostReports from "./pages/HostReports";
+import HostServices from "./pages/HostServices";
 import ClientSignup from "./pages/ClientSignup";
 import ClientLocation from "./pages/ClientLocation";
 import ClientLogin from "./pages/ClientLogin";
@@ -35,6 +39,10 @@ const App = () => (
             <Route path="/accommodation/:id" element={<AccommodationDetail />} />
             <Route path="/booking/:id" element={<Booking />} />
             <Route path="/host-dashboard" element={<HostDashboard />} />
+            <Route path="/host-calendar" element={<HostCalendar />} />
+            <Route path="/host-promotions" element={<HostPromotions />} />
+            <Route path="/host-reports" element={<HostReports />} />
+            <Route path="/host-services" element={<HostServices />} />
             
             {/* Client Routes */}
             <Route path="/client-signup" element={<ClientSignup />} />
