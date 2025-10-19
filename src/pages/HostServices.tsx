@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header';
+import { HostBottomNav } from '@/components/HostBottomNav';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Plus, Pencil, Trash2, Clock, Euro } from 'lucide-react';
@@ -123,6 +124,8 @@ export default function HostServices() {
           </Button>
         </div>
       </div>
+      
+      <HostBottomNav />
     </div>
   );
 }

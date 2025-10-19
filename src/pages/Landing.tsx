@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Sparkles, Calendar, MapPin, BarChart3, DollarSign, TrendingUp } from 'lucide-react';
+import heroBuilding from '@/assets/hero-building.jpg';
+import gradientBg1 from '@/assets/gradient-bg-1.jpg';
 
 export default function Landing() {
   const { t } = useLanguage();
@@ -49,21 +51,32 @@ export default function Landing() {
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 md:pb-16 px-4 gradient-primary">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-4 md:mb-6 animate-slide-up">
+      {/* Hero Section with Building Background */}
+      <section className="relative pt-24 pb-12 md:pb-16 px-4 overflow-hidden min-h-[600px] flex items-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroBuilding} 
+            alt="Modern luxury hotel" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/90 via-primary/80 to-accent/90"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto text-center max-w-4xl relative z-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-4 md:mb-6 animate-slide-up drop-shadow-lg">
             Simandou Séjour
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/90 mb-6 md:mb-8 animate-slide-up px-2">
+          <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/95 mb-8 md:mb-12 animate-slide-up px-2 drop-shadow-md">
             {t('slogan')}
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-2xl mx-auto animate-slide-up">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto animate-slide-up">
             <Link to="/client-login" className="w-full">
               <Button 
                 size="lg" 
-                className="w-full h-12 md:h-14 text-base md:text-lg bg-primary hover:bg-primary/90 shadow-medium"
+                className="w-full h-14 md:h-16 text-base md:text-lg bg-primary hover:bg-primary/90 shadow-strong backdrop-blur-sm font-bold"
               >
                 {t('forTravelers')}
               </Button>
@@ -72,8 +85,7 @@ export default function Landing() {
             <Link to="/host-login" className="w-full">
               <Button 
                 size="lg" 
-                variant="secondary"
-                className="w-full h-12 md:h-14 text-base md:text-lg shadow-medium"
+                className="w-full h-14 md:h-16 text-base md:text-lg bg-secondary hover:bg-secondary/90 shadow-strong backdrop-blur-sm font-bold"
               >
                 {t('forHosts')}
               </Button>
@@ -83,8 +95,11 @@ export default function Landing() {
       </section>
 
       {/* Traveler Features */}
-      <section className="py-12 md:py-16 px-4 bg-background">
-        <div className="container mx-auto max-w-6xl">
+      <section className="relative py-12 md:py-16 px-4 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-30" />
+        </div>
+        <div className="container mx-auto max-w-6xl relative z-10">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 md:mb-12 text-foreground">
             Pour les Voyageurs
           </h2>
@@ -115,7 +130,7 @@ export default function Landing() {
       <SponsoredCarousel />
 
       {/* Host Features */}
-      <section className="py-12 md:py-16 px-4 bg-muted/30">
+      <section className="relative py-12 md:py-16 px-4 gradient-secondary overflow-hidden">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 md:mb-12 text-foreground">
             Pour les Hôteliers

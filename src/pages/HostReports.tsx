@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header';
+import { HostBottomNav } from '@/components/HostBottomNav';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -212,6 +213,8 @@ export default function HostReports() {
           </div>
         </div>
       </div>
+      
+      <HostBottomNav />
     </div>
   );
 }

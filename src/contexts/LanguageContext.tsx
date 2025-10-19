@@ -126,6 +126,158 @@ const translations: Translations = {
     pt: "Preço sugerido pela IA",
     zh: "人工智能建议价格"
   },
+  // Navigation
+  home: {
+    fr: "Accueil",
+    en: "Home",
+    pt: "Início",
+    zh: "首页"
+  },
+  favorites: {
+    fr: "Favoris",
+    en: "Favorites",
+    pt: "Favoritos",
+    zh: "收藏"
+  },
+  notifications: {
+    fr: "Notifications",
+    en: "Notifications",
+    pt: "Notificações",
+    zh: "通知"
+  },
+  profile: {
+    fr: "Profil",
+    en: "Profile",
+    pt: "Perfil",
+    zh: "个人资料"
+  },
+  dashboard: {
+    fr: "Tableau de bord",
+    en: "Dashboard",
+    pt: "Painel",
+    zh: "仪表板"
+  },
+  calendar: {
+    fr: "Calendrier",
+    en: "Calendar",
+    pt: "Calendário",
+    zh: "日历"
+  },
+  reports: {
+    fr: "Rapports",
+    en: "Reports",
+    pt: "Relatórios",
+    zh: "报告"
+  },
+  services: {
+    fr: "Services",
+    en: "Services",
+    pt: "Serviços",
+    zh: "服务"
+  },
+  messages: {
+    fr: "Messages",
+    en: "Messages",
+    pt: "Mensagens",
+    zh: "消息"
+  },
+  // Auth pages
+  signUp: {
+    fr: "Inscription",
+    en: "Sign Up",
+    pt: "Cadastrar",
+    zh: "注册"
+  },
+  signIn: {
+    fr: "Connexion",
+    en: "Sign In",
+    pt: "Entrar",
+    zh: "登录"
+  },
+  fullName: {
+    fr: "Nom complet",
+    en: "Full name",
+    pt: "Nome completo",
+    zh: "全名"
+  },
+  email: {
+    fr: "Email",
+    en: "Email",
+    pt: "Email",
+    zh: "电子邮件"
+  },
+  password: {
+    fr: "Mot de passe",
+    en: "Password",
+    pt: "Senha",
+    zh: "密码"
+  },
+  confirmPassword: {
+    fr: "Confirmer le mot de passe",
+    en: "Confirm password",
+    pt: "Confirmar senha",
+    zh: "确认密码"
+  },
+  continue: {
+    fr: "Continuer",
+    en: "Continue",
+    pt: "Continuar",
+    zh: "继续"
+  },
+  welcome: {
+    fr: "Bienvenue",
+    en: "Welcome",
+    pt: "Bem-vindo",
+    zh: "欢迎"
+  },
+  location: {
+    fr: "Localisation",
+    en: "Location",
+    pt: "Localização",
+    zh: "位置"
+  },
+  specialOffers: {
+    fr: "Offres spéciales",
+    en: "Special offers",
+    pt: "Ofertas especiais",
+    zh: "特别优惠"
+  },
+  myAccount: {
+    fr: "Mon compte",
+    en: "My account",
+    pt: "Minha conta",
+    zh: "我的账户"
+  },
+  logout: {
+    fr: "Déconnexion",
+    en: "Logout",
+    pt: "Sair",
+    zh: "登出"
+  },
+  promotions: {
+    fr: "Promotions",
+    en: "Promotions",
+    pt: "Promoções",
+    zh: "促销"
+  },
+  myReservations: {
+    fr: "Mes réservations",
+    en: "My reservations",
+    pt: "Minhas reservas",
+    zh: "我的预订"
+  },
+  transactionHistory: {
+    fr: "Historique des transactions",
+    en: "Transaction history",
+    pt: "Histórico de transações",
+    zh: "交易历史"
+  },
+  support: {
+    fr: "Support",
+    en: "Support",
+    pt: "Suporte",
+    zh: "支持"
+  }
 };
 
 interface LanguageContextType {

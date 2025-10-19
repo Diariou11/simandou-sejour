@@ -21,6 +21,10 @@ import ClientHome from "./pages/ClientHome";
 import HostSignup from "./pages/HostSignup";
 import HostLogin from "./pages/HostLogin";
 import HostHome from "./pages/HostHome";
+import HostMessages from "./pages/HostMessages";
+import ClientFavorites from "./pages/ClientFavorites";
+import ClientNotifications from "./pages/ClientNotifications";
+import ClientProfile from "./pages/ClientProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -54,6 +58,12 @@ const App = () => (
             <Route path="/host-signup" element={<HostSignup />} />
             <Route path="/host-login" element={<HostLogin />} />
             <Route path="/host-home" element={<HostHome />} />
+            <Route path="/host-messages" element={<HostMessages />} />
+            
+            {/* Client Additional Routes */}
+            <Route path="/client-favorites" element={<ClientFavorites />} />
+            <Route path="/client-notifications" element={<ClientNotifications />} />
+            <Route path="/client-profile" element={<ClientProfile />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

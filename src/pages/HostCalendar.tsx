@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Header } from '@/components/Header';
+import { HostBottomNav } from '@/components/HostBottomNav';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -111,6 +112,8 @@ export default function HostCalendar() {
           </Button>
         </div>
       </div>
+      
+      <HostBottomNav />
     </div>
   );
 }

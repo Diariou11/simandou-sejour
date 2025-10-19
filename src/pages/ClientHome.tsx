@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
+import { ClientBottomNav } from '@/components/ClientBottomNav';
 import { AccommodationCard } from '@/components/AccommodationCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { mockAccommodations } from '@/data/mockData';
-import { Search, Sparkles, Home, Hotel, MapPin } from 'lucide-react';
+import { Search, Sparkles, MapPin } from 'lucide-react';
+import gradientBg1 from '@/assets/gradient-bg-1.jpg';
 
 export default function ClientHome() {
   const [selectedCategory, setSelectedCategory] = useState('Tous');
@@ -18,7 +20,11 @@ export default function ClientHome() {
     <div className="min-h-screen pb-20">
       <Header />
       
-      <div className="pt-20 px-4">
+      <div className="absolute inset-0 z-0">
+        <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-20 fixed" />
+      </div>
+      
+      <div className="relative z-10 pt-20 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Search Bar */}
           <div className="mb-6 mt-4">
@@ -92,29 +98,7 @@ export default function ClientHome() {
         </div>
       </div>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-card border-t shadow-strong">
-        <div className="container mx-auto max-w-6xl px-4 py-3">
-          <div className="flex justify-around items-center">
-            <Link to="/client-home" className="flex flex-col items-center gap-1 text-primary">
-              <Home className="h-5 w-5" />
-              <span className="text-xs font-bold">Accueil</span>
-            </Link>
-            <Link to="/search" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-smooth">
-              <Search className="h-5 w-5" />
-              <span className="text-xs">Recherche</span>
-            </Link>
-            <Link to="/client-favorites" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-smooth">
-              <Hotel className="h-5 w-5" />
-              <span className="text-xs">Favoris</span>
-            </Link>
-            <Link to="/client-account" className="flex flex-col items-center gap-1 text-muted-foreground hover:text-primary transition-smooth">
-              <MapPin className="h-5 w-5" />
-              <span className="text-xs">Profil</span>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <ClientBottomNav />
     </div>
   );
 }

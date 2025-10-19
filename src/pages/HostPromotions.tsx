@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header';
+import { HostBottomNav } from '@/components/HostBottomNav';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -202,6 +203,8 @@ export default function HostPromotions() {
           </div>
         </div>
       </div>
+      
+      <HostBottomNav />
     </div>
   );
 }
