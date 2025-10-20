@@ -31,8 +31,16 @@ import ClientSpecialOffers from "./pages/ClientSpecialOffers";
 import ClientReviews from "./pages/ClientReviews";
 import ClientSupport from "./pages/ClientSupport";
 import ClientAccount from "./pages/ClientAccount";
+import BookingDates from "./pages/BookingDates";
+import BookingInfo from "./pages/BookingInfo";
+import BookingConfirmation from "./pages/BookingConfirmation";
 import HostReviews from "./pages/HostReviews";
 import HostProfile from "./pages/HostProfile";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import HowItWorks from "./pages/HowItWorks";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +58,9 @@ const App = () => (
             <Route path="/search" element={<Search />} />
             <Route path="/accommodation/:id" element={<AccommodationDetail />} />
             <Route path="/booking/:id" element={<Booking />} />
+            <Route path="/booking-dates/:id" element={<BookingDates />} />
+            <Route path="/booking-info/:id" element={<BookingInfo />} />
+            <Route path="/booking-confirmation/:id" element={<BookingConfirmation />} />
             <Route path="/host-dashboard" element={<HostDashboard />} />
             <Route path="/host-calendar" element={<HostCalendar />} />
             <Route path="/host-promotions" element={<HostPromotions />} />
@@ -80,6 +91,13 @@ const App = () => (
             <Route path="/client-reviews" element={<ClientReviews />} />
             <Route path="/client-support" element={<ClientSupport />} />
             <Route path="/client-account" element={<ClientAccount />} />
+            
+            {/* Institutional Pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/how-it-works" element={<HowItWorks />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

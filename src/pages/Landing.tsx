@@ -183,6 +183,46 @@ export default function Landing() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 bg-card/50 border-t border-border">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
+            <div>
+              <h4 className="font-bold text-foreground mb-3">À propos</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-smooth">{t('about')}</Link></li>
+                <li><Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-smooth">{t('howItWorks')}</Link></li>
+                <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-smooth">{t('contact')}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-3">Légal</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/terms" className="text-muted-foreground hover:text-primary transition-smooth">{t('terms')}</Link></li>
+                <li><Link to="/privacy" className="text-muted-foreground hover:text-primary transition-smooth">{t('privacy')}</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-3">Support</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/client-support" className="text-muted-foreground hover:text-primary transition-smooth">Centre d'aide</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-foreground mb-3">Suivez-nous</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>Facebook</li>
+                <li>Instagram</li>
+                <li>Twitter</li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center text-sm text-muted-foreground border-t border-border pt-6">
+            © 2025 Simandou Séjour. Tous droits réservés.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

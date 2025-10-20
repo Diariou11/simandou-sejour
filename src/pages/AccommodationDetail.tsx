@@ -143,7 +143,7 @@ export default function AccommodationDetail() {
                   </div>
                 </div>
 
-                <Link to={`/booking/${accommodation.id}`}>
+                <Link to={`/booking-dates/${accommodation.id}`}>
                   <Button className="w-full h-12 text-lg bg-primary hover:bg-primary/90 shadow-medium">
                     {t('bookNow')}
                   </Button>
