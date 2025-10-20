@@ -1,117 +1,94 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Header } from '@/components/Header';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { ClientBottomNav } from '@/components/ClientBottomNav';
 import { Card } from '@/components/ui/card';
-import { Sparkles, MapPin, AlertCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { MapPin, Navigation, Sparkles } from 'lucide-react';
+import guineaMap from '@/assets/guinea-map.jpg';
 
 export default function ClientLocation() {
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    prefecture: '',
-    quartier: '',
-    country: 'Guinée'
-  });
-  const [aiSuggestion, setAiSuggestion] = useState('');
+  const { t } = useLanguage();
+  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
-  const handlePrefectureChange = (value: string) => {
-    setFormData({...formData, prefecture: value});
-    
-    if (value.toLowerCase().includes('conakry')) {
-      setAiSuggestion("✨ IA : En fonction de votre localisation (Conakry), nous vous proposerons des hébergements et services à proximité. Top hébergements disponibles à Conakry : Hôtel Sily National, Résidence Loos.");
-    } else if (value.toLowerCase().includes('labé')) {
-      setAiSuggestion("✨ IA : Labé est une destination magnifique ! Nous vous recommandons Hôtel Fouta Djallon pour votre prochain séjour.");
-    } else if (value) {
-      setAiSuggestion(`✨ IA : Nous enregistrons votre localisation (${value}) pour vous proposer les meilleures offres disponibles dans votre région.`);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    toast({
-      title: "Compte créé avec succès !",
-      description: "Bienvenue sur Simandou Séjour"
-    });
-    
-    setTimeout(() => navigate('/client-home'), 1500);
-  };
+  const regions = [
+    { name: 'Conakry', count: 45 },
+    { name: 'Kindia', count: 28 },
+    { name: 'Boké', count: 15 },
+    { name: 'Labé', count: 22 },
+    { name: 'Kankan', count: 18 },
+    { name: "N'Zérékoré", count: 20 }
+  ];
 
   return (
-    <div className="min-h-screen pb-16">
-      <Header />
-      
-      <div className="pt-24 px-4">
-        <div className="container mx-auto max-w-md">
-          <Card className="p-6 md:p-8 shadow-strong animate-scale-in">
-            <h1 className="text-2xl md:text-3xl font-black text-foreground mb-6 text-center">
-              Localisation Client
-            </h1>
+    <div className="min-h-screen pb-20 gradient-secondary">
+      <div className="pt-6 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-2xl md:text-3xl font-black text-foreground mb-2">
+            {t('location')}
+          </h1>
+          <p className="text-muted-foreground mb-6">
+            Explorez les hébergements à travers la Guinée
+          </p>
 
-            <div className="bg-destructive/10 border border-destructive/20 p-4 rounded-md mb-6 flex items-start gap-3">
-              <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-destructive">
-                Accès à la position refusé. Veuillez saisir manuellement.
-              </p>
+          <Card className="p-4 mb-6 shadow-strong overflow-hidden relative">
+            <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden mb-4 bg-muted">
+              <img 
+                src={guineaMap} 
+                alt="Carte de la Guinée"
+                className="w-full h-full object-contain"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="prefecture">Préfecture / Commune</Label>
-                <Input
-                  id="prefecture"
-                  placeholder="Ex: Conakry"
-                  value={formData.prefecture}
-                  onChange={(e) => handlePrefectureChange(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="quartier">Sous-préfecture / Quartier</Label>
-                <Input
-                  id="quartier"
-                  placeholder="Ex: Kaloum"
-                  value={formData.quartier}
-                  onChange={(e) => setFormData({...formData, quartier: e.target.value})}
-                  required
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="country">Pays</Label>
-                <Input
-                  id="country"
-                  placeholder="Ex: Guinée"
-                  value={formData.country}
-                  onChange={(e) => setFormData({...formData, country: e.target.value})}
-                  required
-                />
-              </div>
-
-              {aiSuggestion && (
-                <div className="bg-primary/5 border border-primary/20 p-4 rounded-md animate-fade-in">
-                  <div className="flex items-start gap-2">
-                    <Sparkles className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-muted-foreground">
-                      {aiSuggestion}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 h-12 text-base font-bold">
-                <MapPin className="mr-2 h-5 w-5" />
-                Valider et créer mon compte
-              </Button>
-            </form>
+            <Button className="w-full bg-primary hover:bg-primary/90">
+              <Navigation className="h-4 w-4 mr-2" />
+              Utiliser ma position actuelle
+            </Button>
           </Card>
+
+          <Card className="p-4 md:p-6 mb-6 bg-primary/5 border-primary/20">
+            <div className="flex items-start gap-3">
+              <Sparkles className="h-6 w-6 text-primary shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-foreground mb-1">Suggestion IA</h3>
+                <p className="text-sm text-muted-foreground">
+                  Conakry et Labé sont les destinations les plus populaires ce mois-ci
+                </p>
+              </div>
+            </div>
+          </Card>
+
+          <div className="space-y-3">
+            <h2 className="text-xl font-bold text-foreground mb-4">Régions populaires</h2>
+            
+            {regions.map((region) => (
+              <Card
+                key={region.name}
+                className={`p-4 cursor-pointer hover:shadow-medium transition-smooth ${
+                  selectedRegion === region.name ? 'border-primary shadow-medium' : ''
+                }`}
+                onClick={() => setSelectedRegion(region.name)}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                      <MapPin className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-foreground">{region.name}</h3>
+                      <p className="text-sm text-muted-foreground">{region.count} hébergements</p>
+                    </div>
+                  </div>
+                  <Badge variant="outline">Voir</Badge>
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
+
+      <ClientBottomNav />
     </div>
   );
 }

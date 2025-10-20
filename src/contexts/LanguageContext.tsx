@@ -277,6 +277,229 @@ const translations: Translations = {
     en: "Support",
     pt: "Suporte",
     zh: "支持"
+  },
+  // Additional keys
+  reservations: {
+    fr: "Réservations",
+    en: "Reservations",
+    pt: "Reservas",
+    zh: "预订"
+  },
+  reviews: {
+    fr: "Avis",
+    en: "Reviews",
+    pt: "Avaliações",
+    zh: "评论"
+  },
+  transactions: {
+    fr: "Transactions",
+    en: "Transactions",
+    pt: "Transações",
+    zh: "交易"
+  },
+  offers: {
+    fr: "Offres",
+    en: "Offers",
+    pt: "Ofertas",
+    zh: "优惠"
+  },
+  account: {
+    fr: "Compte",
+    en: "Account",
+    pt: "Conta",
+    zh: "账户"
+  },
+  about: {
+    fr: "À propos",
+    en: "About",
+    pt: "Sobre",
+    zh: "关于"
+  },
+  howItWorks: {
+    fr: "Comment ça marche",
+    en: "How it works",
+    pt: "Como funciona",
+    zh: "如何工作"
+  },
+  terms: {
+    fr: "Conditions",
+    en: "Terms",
+    pt: "Termos",
+    zh: "条款"
+  },
+  privacy: {
+    fr: "Confidentialité",
+    en: "Privacy",
+    pt: "Privacidade",
+    zh: "隐私"
+  },
+  contact: {
+    fr: "Contact",
+    en: "Contact",
+    pt: "Contato",
+    zh: "联系"
+  },
+  seeMore: {
+    fr: "Voir plus",
+    en: "See more",
+    pt: "Ver mais",
+    zh: "查看更多"
+  },
+  confirm: {
+    fr: "Confirmer",
+    en: "Confirm",
+    pt: "Confirmar",
+    zh: "确认"
+  },
+  cancel: {
+    fr: "Annuler",
+    en: "Cancel",
+    pt: "Cancelar",
+    zh: "取消"
+  },
+  save: {
+    fr: "Enregistrer",
+    en: "Save",
+    pt: "Salvar",
+    zh: "保存"
+  },
+  edit: {
+    fr: "Modifier",
+    en: "Edit",
+    pt: "Editar",
+    zh: "编辑"
+  },
+  delete: {
+    fr: "Supprimer",
+    en: "Delete",
+    pt: "Excluir",
+    zh: "删除"
+  },
+  back: {
+    fr: "Retour",
+    en: "Back",
+    pt: "Voltar",
+    zh: "返回"
+  },
+  loading: {
+    fr: "Chargement...",
+    en: "Loading...",
+    pt: "Carregando...",
+    zh: "加载中..."
+  },
+  noResults: {
+    fr: "Aucun résultat",
+    en: "No results",
+    pt: "Nenhum resultado",
+    zh: "无结果"
+  },
+  filter: {
+    fr: "Filtrer",
+    en: "Filter",
+    pt: "Filtrar",
+    zh: "筛选"
+  },
+  sort: {
+    fr: "Trier",
+    en: "Sort",
+    pt: "Ordenar",
+    zh: "排序"
+  },
+  apply: {
+    fr: "Appliquer",
+    en: "Apply",
+    pt: "Aplicar",
+    zh: "应用"
+  },
+  reset: {
+    fr: "Réinitialiser",
+    en: "Reset",
+    pt: "Redefinir",
+    zh: "重置"
+  },
+  selectDates: {
+    fr: "Sélectionner les dates",
+    en: "Select dates",
+    pt: "Selecionar datas",
+    zh: "选择日期"
+  },
+  guests: {
+    fr: "Voyageurs",
+    en: "Guests",
+    pt: "Hóspedes",
+    zh: "客人"
+  },
+  rooms: {
+    fr: "Chambres",
+    en: "Rooms",
+    pt: "Quartos",
+    zh: "房间"
+  },
+  total: {
+    fr: "Total",
+    en: "Total",
+    pt: "Total",
+    zh: "总计"
+  },
+  paymentMethod: {
+    fr: "Méthode de paiement",
+    en: "Payment method",
+    pt: "Método de pagamento",
+    zh: "支付方式"
+  },
+  bookingConfirmed: {
+    fr: "Réservation confirmée",
+    en: "Booking confirmed",
+    pt: "Reserva confirmada",
+    zh: "预订已确认"
+  },
+  pending: {
+    fr: "En attente",
+    en: "Pending",
+    pt: "Pendente",
+    zh: "待定"
+  },
+  completed: {
+    fr: "Terminé",
+    en: "Completed",
+    pt: "Concluído",
+    zh: "已完成"
+  },
+  cancelled: {
+    fr: "Annulé",
+    en: "Cancelled",
+    pt: "Cancelado",
+    zh: "已取消"
+  },
+  premium: {
+    fr: "Premium",
+    en: "Premium",
+    pt: "Premium",
+    zh: "高级"
+  },
+  upgradeToPremium: {
+    fr: "Passer à Premium",
+    en: "Upgrade to Premium",
+    pt: "Atualizar para Premium",
+    zh: "升级到高级"
+  },
+  darkMode: {
+    fr: "Mode sombre",
+    en: "Dark mode",
+    pt: "Modo escuro",
+    zh: "深色模式"
+  },
+  language: {
+    fr: "Langue",
+    en: "Language",
+    pt: "Idioma",
+    zh: "语言"
+  },
+  settings: {
+    fr: "Paramètres",
+    en: "Settings",
+    pt: "Configurações",
+    zh: "设置"
   }
 };
 

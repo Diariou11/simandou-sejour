@@ -25,6 +25,14 @@ import HostMessages from "./pages/HostMessages";
 import ClientFavorites from "./pages/ClientFavorites";
 import ClientNotifications from "./pages/ClientNotifications";
 import ClientProfile from "./pages/ClientProfile";
+import ClientReservations from "./pages/ClientReservations";
+import ClientTransactions from "./pages/ClientTransactions";
+import ClientSpecialOffers from "./pages/ClientSpecialOffers";
+import ClientReviews from "./pages/ClientReviews";
+import ClientSupport from "./pages/ClientSupport";
+import ClientAccount from "./pages/ClientAccount";
+import HostReviews from "./pages/HostReviews";
+import HostProfile from "./pages/HostProfile";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -59,11 +67,19 @@ const App = () => (
             <Route path="/host-login" element={<HostLogin />} />
             <Route path="/host-home" element={<HostHome />} />
             <Route path="/host-messages" element={<HostMessages />} />
+            <Route path="/host-reviews" element={<HostReviews />} />
+            <Route path="/host-profile" element={<HostProfile />} />
             
             {/* Client Additional Routes */}
             <Route path="/client-favorites" element={<ClientFavorites />} />
             <Route path="/client-notifications" element={<ClientNotifications />} />
             <Route path="/client-profile" element={<ClientProfile />} />
+            <Route path="/client-reservations" element={<ClientReservations />} />
+            <Route path="/client-transactions" element={<ClientTransactions />} />
+            <Route path="/client-offers" element={<ClientSpecialOffers />} />
+            <Route path="/client-reviews" element={<ClientReviews />} />
+            <Route path="/client-support" element={<ClientSupport />} />
+            <Route path="/client-account" element={<ClientAccount />} />
             
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
