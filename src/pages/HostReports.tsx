@@ -93,8 +93,8 @@ export default function HostReports() {
                     <span>-2%</span>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-1">RevPAR</p>
-                <p className="text-3xl font-black text-foreground">125 €</p>
+                <p className="text-sm text-muted-foreground mb-1">Revenus</p>
+                <p className="text-3xl font-black text-foreground">112 500 000 GNF</p>
               </Card>
 
               <Card className="p-6">

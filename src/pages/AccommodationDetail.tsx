@@ -5,8 +5,13 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { mockAccommodations } from '@/data/mockData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Star, MapPin, Sparkles, Wifi, UtensilsCrossed, Car, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { Star, MapPin, Sparkles, Wifi, UtensilsCrossed, Car, Shield, ChevronLeft as ChevronLeftIcon, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import modernBuilding from '@/assets/interior/modern-building-1.jpg';
+import hotelGarden from '@/assets/interior/hotel-garden-1.jpg';
+import hotelRoom from '@/assets/interior/hotel-room-1.jpg';
+import hotelCorridor from '@/assets/interior/hotel-corridor-1.jpg';
+import hotelBathroom from '@/assets/interior/hotel-bathroom-1.jpg';
 
 export default function AccommodationDetail() {
   const { id } = useParams();
@@ -32,8 +37,24 @@ export default function AccommodationDetail() {
     'Sécurité 24h/24': <Shield className="h-5 w-5" />,
   };
 
-  // Use the same image 3 times for carousel effect (in a real app, you'd have multiple images)
-  const images = [accommodation.image, accommodation.image, accommodation.image];
+  // 5 different images for carousel with auto-play
+  const images = [
+    accommodation.image,
+    modernBuilding,
+    hotelGarden,
+    hotelRoom,
+    hotelCorridor,
+    hotelBathroom
+  ];
+  
+  // Auto-play carousel every 1 second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 1000);
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
   
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -75,7 +96,7 @@ export default function AccommodationDetail() {
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-foreground p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
               aria-label="Image précédente"
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeftIcon className="h-6 w-6" />
             </button>
             
             <button 

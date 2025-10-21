@@ -107,35 +107,35 @@ export default function HostMessages() {
               </Card>
               
               {/* Chat Area */}
-              <Card className="p-4 md:col-span-2 flex flex-col">
+              <Card className="p-4 md:col-span-2 flex flex-col overflow-hidden">
                 {selectedConv ? (
-                  <>
-                    <div className="flex items-center gap-3 pb-4 border-b border-border">
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-3 pb-4 border-b border-border flex-shrink-0">
                       <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
                         {conversations.find(c => c.id === selectedConv)?.avatar}
                       </div>
-                      <div>
-                        <p className="font-semibold text-foreground">
+                      <div className="min-w-0">
+                        <p className="font-semibold text-foreground truncate">
                           {conversations.find(c => c.id === selectedConv)?.name}
                         </p>
                         <p className="text-xs text-muted-foreground">En ligne</p>
                       </div>
                     </div>
                     
-                    <div className="flex-1 overflow-y-auto py-4 space-y-3">
+                    <div className="flex-1 overflow-y-auto py-4 space-y-3 min-h-0">
                       {messages.map((msg, idx) => (
                         <div
                           key={idx}
                           className={`flex ${msg.sender === 'host' ? 'justify-end' : 'justify-start'}`}
                         >
                           <div
-                            className={`max-w-[70%] rounded-lg p-3 ${
+                            className={`max-w-[85%] md:max-w-[70%] rounded-lg p-3 ${
                               msg.sender === 'host'
                                 ? 'bg-primary text-primary-foreground'
                                 : 'bg-muted text-foreground'
                             }`}
                           >
-                            <p className="text-sm">{msg.text}</p>
+                            <p className="text-sm break-words">{msg.text}</p>
                             <p className={`text-xs mt-1 ${
                               msg.sender === 'host' ? 'text-primary-foreground/70' : 'text-muted-foreground'
                             }`}>
@@ -146,13 +146,13 @@ export default function HostMessages() {
                       ))}
                     </div>
                     
-                    <div className="flex gap-2 pt-4 border-t border-border">
-                      <Input placeholder="Écrivez votre message..." className="flex-1" />
-                      <Button className="bg-primary hover:bg-primary/90">
+                    <div className="flex gap-2 pt-4 border-t border-border flex-shrink-0">
+                      <Input placeholder="Écrivez votre message..." className="flex-1 min-w-0" />
+                      <Button className="bg-primary hover:bg-primary/90 flex-shrink-0">
                         <Send className="h-4 w-4" />
                       </Button>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <div className="flex-1 flex flex-col items-center justify-center text-center">
                     <MessageSquare className="h-16 w-16 text-muted-foreground mb-4" />

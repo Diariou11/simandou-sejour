@@ -9,8 +9,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
 
 export default function HostCalendar() {
-  const [selectedDate, setSelectedDate] = useState(26);
+  const [selectedDates, setSelectedDates] = useState<number[]>([]);
   const [selectedAccommodation, setSelectedAccommodation] = useState('hotel-belle-vue');
+  const [currentMonth, setCurrentMonth] = useState(7); // août = 7 (0-indexed)
+  const [currentYear, setCurrentYear] = useState(2025);
 
   const accommodations = [
     { id: 'hotel-belle-vue', name: 'Hôtel Belle Vue', location: 'Conakry, Guinée' },
@@ -58,15 +60,38 @@ export default function HostCalendar() {
           </div>
 
           {/* Calendar */}
-          <Card className="p-6 mb-6">
+          <Card className="p-4 md:p-6 mb-6 overflow-x-auto">
             {/* Month Navigation */}
             <div className="flex items-center justify-between mb-6">
-              <button className="p-2 hover:bg-accent rounded-md">
-                <ChevronLeft className="h-6 w-6" />
+              <button 
+                onClick={() => {
+                  if (currentMonth === 0) {
+                    setCurrentMonth(11);
+                    setCurrentYear(prev => prev - 1);
+                  } else {
+                    setCurrentMonth(prev => prev - 1);
+                  }
+                }}
+                className="p-2 hover:bg-accent rounded-md transition-smooth"
+              >
+                <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
               </button>
-              <h3 className="text-2xl font-black text-foreground">août 2025</h3>
-              <button className="p-2 hover:bg-accent rounded-md">
-                <ChevronRight className="h-6 w-6" />
+              <h3 className="text-lg md:text-2xl font-black text-foreground">
+                {['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 
+                  'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][currentMonth]} {currentYear}
+              </h3>
+              <button 
+                onClick={() => {
+                  if (currentMonth === 11) {
+                    setCurrentMonth(0);
+                    setCurrentYear(prev => prev + 1);
+                  } else {
+                    setCurrentMonth(prev => prev + 1);
+                  }
+                }}
+                className="p-2 hover:bg-accent rounded-md transition-smooth"
+              >
+                <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
               </button>
             </div>
 
@@ -81,20 +106,31 @@ export default function HostCalendar() {
 
             {/* Calendar Grid */}
             <div className="grid grid-cols-7 gap-2">
-              {generateCalendarDays().map((day) => (
-                <button
-                  key={day}
-                  onClick={() => setSelectedDate(day)}
-                  className={`p-3 rounded-lg text-center transition-smooth ${
-                    selectedDate === day
-                      ? 'border-2 border-primary bg-primary/5'
-                      : 'hover:bg-accent'
-                  }`}
-                >
-                  <div className="text-lg font-bold text-foreground">{day}</div>
-                  <div className="text-xs text-muted-foreground mt-1">Libre</div>
-                </button>
-              ))}
+              {generateCalendarDays().map((day) => {
+                const isSelected = selectedDates.includes(day);
+                return (
+                  <button
+                    key={day}
+                    onClick={() => {
+                      if (isSelected) {
+                        setSelectedDates(prev => prev.filter(d => d !== day));
+                      } else {
+                        setSelectedDates(prev => [...prev, day]);
+                      }
+                    }}
+                    className={`p-2 md:p-3 rounded-lg text-center transition-smooth ${
+                      isSelected
+                        ? 'border-2 border-primary bg-primary/10'
+                        : 'hover:bg-accent'
+                    }`}
+                  >
+                    <div className="text-sm md:text-lg font-bold text-foreground">{day}</div>
+                    <div className="text-xs text-muted-foreground mt-1">
+                      {isSelected ? 'Occupé' : 'Libre'}
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </Card>
 

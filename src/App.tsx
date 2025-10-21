@@ -34,8 +34,9 @@ import ClientAccount from "./pages/ClientAccount";
 import BookingDates from "./pages/BookingDates";
 import BookingInfo from "./pages/BookingInfo";
 import BookingConfirmation from "./pages/BookingConfirmation";
-import HostReviews from "./pages/HostReviews";
+import HostReviewsManagement from "./pages/HostReviewsManagement";
 import HostProfile from "./pages/HostProfile";
+import HostSettings from "./pages/HostSettings";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import HowItWorks from "./pages/HowItWorks";
@@ -78,8 +79,9 @@ const App = () => (
             <Route path="/host-login" element={<HostLogin />} />
             <Route path="/host-home" element={<HostHome />} />
             <Route path="/host-messages" element={<HostMessages />} />
-            <Route path="/host-reviews" element={<HostReviews />} />
-            <Route path="/host-profile" element={<HostProfile />} />
+          <Route path="/host-reviews" element={<HostReviewsManagement />} />
+          <Route path="/host-profile" element={<HostProfile />} />
+          <Route path="/host-settings" element={<HostSettings />} />
             
             {/* Client Additional Routes */}
             <Route path="/client-favorites" element={<ClientFavorites />} />
@@ -88,9 +90,10 @@ const App = () => (
             <Route path="/client-reservations" element={<ClientReservations />} />
             <Route path="/client-transactions" element={<ClientTransactions />} />
             <Route path="/client-offers" element={<ClientSpecialOffers />} />
-            <Route path="/client-reviews" element={<ClientReviews />} />
-            <Route path="/client-support" element={<ClientSupport />} />
-            <Route path="/client-account" element={<ClientAccount />} />
+          <Route path="/client-reviews" element={<ClientReviews />} />
+          <Route path="/client-support" element={<ClientSupport />} />
+          <Route path="/client-account" element={<ClientAccount />} />
+          <Route path="/client-location" element={<ClientLocation />} />
             
             {/* Institutional Pages */}
             <Route path="/about" element={<About />} />

@@ -76,19 +76,19 @@ export default function Landing() {
             <Link to="/client-login">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto px-8 md:px-12 h-14 md:h-16 text-base md:text-lg bg-primary hover:bg-primary/90 hover:scale-105 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
+                className="w-full sm:w-auto px-6 md:px-8 h-12 md:h-14 text-base md:text-lg bg-primary hover:bg-primary/90 hover:scale-105 hover:-translate-y-1 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
               >
-                {t('forTravelers')}
+                Je cherche un hébergement
               </Button>
             </Link>
             
             <Link to="/host-login">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto px-8 md:px-12 h-14 md:h-16 text-base md:text-lg bg-secondary hover:bg-secondary/90 hover:scale-105 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
+                className="w-full sm:w-auto px-6 md:px-8 h-12 md:h-14 text-base md:text-lg bg-secondary hover:bg-secondary/90 hover:scale-105 hover:-translate-y-1 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: '0.1s' }}
               >
-                {t('forHosts')}
+                Je propose un hébergement
               </Button>
             </Link>
           </div>
@@ -101,9 +101,12 @@ export default function Landing() {
           <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="container mx-auto max-w-6xl relative z-10">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 md:mb-12 text-foreground">
-            Pour les Voyageurs
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2 md:mb-3 text-foreground">
+            Pour les Clients
           </h2>
+          <p className="text-sm text-center text-muted-foreground mb-8 md:mb-12 animate-fade-in italic">
+            Citoyens locaux • Diaspora • Professionnels en déplacement • Touristes
+          </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {travelerFeatures.map((feature, idx) => (
@@ -133,9 +136,12 @@ export default function Landing() {
       {/* Host Features */}
       <section className="relative py-12 md:py-16 px-4 gradient-secondary overflow-hidden">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-8 md:mb-12 text-foreground">
-            Pour les Hôteliers
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2 md:mb-3 text-foreground">
+            Pour les Responsables d'Hébergement
           </h2>
+          <p className="text-sm text-center text-muted-foreground mb-8 md:mb-12 animate-fade-in italic">
+            Hôtels • Motels • Résidences • Auberges
+          </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {hostFeatures.map((feature, idx) => (
@@ -162,8 +168,8 @@ export default function Landing() {
       {/* CTA Section */}
       <section className="relative py-16 md:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-40" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-accent/70 to-secondary/80"></div>
+          <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-accent/80 to-secondary/90"></div>
         </div>
         
         <div className="container mx-auto text-center max-w-3xl relative z-10">
