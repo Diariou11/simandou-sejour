@@ -12,13 +12,14 @@ import { useState } from 'react';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import { useTheme } from '@/components/ThemeProvider';
 
 export default function ClientProfile() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { theme, setTheme } = useTheme();
   const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
 
   const handleSave = () => {
     toast({
@@ -132,7 +133,10 @@ export default function ClientProfile() {
                         <p className="text-sm text-muted-foreground">Activer le thème sombre</p>
                       </div>
                     </div>
-                    <Switch checked={darkMode} onCheckedChange={setDarkMode} />
+                    <Switch 
+                      checked={theme === 'dark'} 
+                      onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')} 
+                    />
                   </div>
                   
                   <div className="flex items-center justify-between">

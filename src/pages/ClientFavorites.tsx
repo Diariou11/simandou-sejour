@@ -5,28 +5,31 @@ import { Button } from '@/components/ui/button';
 import { Heart, MapPin, Star } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
+import hotelFoutaDjallon from '@/assets/accommodations/hotel-fouta-djallon.jpg';
+import residenceNimba from '@/assets/accommodations/residence-nimba.jpg';
 
 export default function ClientFavorites() {
   const { t } = useLanguage();
   const [favorites] = useState([
     {
-      id: 1,
+      id: '1',
       name: 'Hôtel Fouta Djallon',
       city: 'Labé',
       rating: 4.8,
       reviews: 120,
       price: 450000,
-      image: '/placeholder.svg'
+      image: hotelFoutaDjallon
     },
     {
-      id: 2,
+      id: '2',
       name: 'Résidence Nimba',
       city: "N'Zérékoré",
       rating: 4.6,
       reviews: 85,
       price: 380000,
-      image: '/placeholder.svg'
+      image: residenceNimba
     }
   ]);
 
@@ -47,28 +50,28 @@ export default function ClientFavorites() {
             
             <div className="space-y-4">
               {favorites.map((item) => (
-                <Card key={item.id} className="p-4 hover:shadow-medium transition-smooth">
-                  <div className="flex gap-4">
+                <Card key={item.id} className="p-3 md:p-4 hover:shadow-medium transition-smooth">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <img 
                       src={item.image} 
                       alt={item.name}
-                      className="w-24 h-24 rounded-lg object-cover"
+                      className="w-full sm:w-28 h-32 sm:h-28 rounded-lg object-cover flex-shrink-0"
                     />
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h3 className="font-bold text-foreground mb-1">{item.name}</h3>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-foreground mb-1 truncate">{item.name}</h3>
                           <p className="text-sm text-muted-foreground flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            {item.city}
+                            <MapPin className="h-3 w-3 flex-shrink-0" />
+                            <span className="truncate">{item.city}</span>
                           </p>
                         </div>
-                        <Button variant="ghost" size="sm" className="text-primary">
+                        <Button variant="ghost" size="sm" className="text-primary flex-shrink-0 -mt-1 -mr-2">
                           <Heart className="h-5 w-5 fill-current" />
                         </Button>
                       </div>
                       
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-2 mb-3">
                         <div className="flex items-center gap-1 text-sm">
                           <Star className="h-4 w-4 fill-primary text-primary" />
                           <span className="font-semibold">{item.rating}</span>
@@ -76,14 +79,16 @@ export default function ClientFavorites() {
                         </div>
                       </div>
                       
-                      <div className="flex items-center justify-between">
-                        <p className="text-lg font-bold text-primary">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <p className="text-base sm:text-lg font-bold text-primary">
                           {new Intl.NumberFormat('fr-GN').format(item.price)} GNF
                           <span className="text-xs text-muted-foreground ml-1">{t('perNight')}</span>
                         </p>
-                        <Button size="sm" className="bg-primary hover:bg-primary/90">
-                          {t('bookNow')}
-                        </Button>
+                        <Link to={`/accommodation/${item.id}`} className="w-full sm:w-auto">
+                          <Button size="sm" className="bg-primary hover:bg-primary/90 w-full sm:w-auto whitespace-nowrap">
+                            {t('bookNow')}
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </div>

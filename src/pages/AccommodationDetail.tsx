@@ -5,12 +5,14 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { mockAccommodations } from '@/data/mockData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Star, MapPin, Sparkles, Wifi, UtensilsCrossed, Car, Shield } from 'lucide-react';
+import { Star, MapPin, Sparkles, Wifi, UtensilsCrossed, Car, Shield, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 
 export default function AccommodationDetail() {
   const { id } = useParams();
   const { t } = useLanguage();
   const accommodation = mockAccommodations.find(a => a.id === id);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!accommodation) {
     return (
@@ -30,6 +32,17 @@ export default function AccommodationDetail() {
     'Sécurité 24h/24': <Shield className="h-5 w-5" />,
   };
 
+  // Use the same image 3 times for carousel effect (in a real app, you'd have multiple images)
+  const images = [accommodation.image, accommodation.image, accommodation.image];
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   const formattedPrice = new Intl.NumberFormat('fr-GN').format(accommodation.price);
   const formattedAiPrice = accommodation.aiPriceSuggestion 
     ? new Intl.NumberFormat('fr-GN').format(accommodation.aiPriceSuggestion)
@@ -41,14 +54,53 @@ export default function AccommodationDetail() {
       
       <div className="pt-20 px-4">
         <div className="container mx-auto max-w-6xl">
-          {/* Hero Image */}
-          <div className="relative h-96 bg-muted rounded-2xl overflow-hidden mb-8 shadow-strong">
-            <div className="absolute inset-0 gradient-hero opacity-30" />
+          {/* Hero Image Carousel */}
+          <div className="relative h-72 md:h-96 bg-muted rounded-2xl overflow-hidden mb-8 shadow-strong group">
+            <img 
+              src={images[currentImageIndex]} 
+              alt={`${accommodation.name} - Image ${currentImageIndex + 1}`}
+              className="w-full h-full object-cover transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            
             {accommodation.sponsored && (
-              <Badge className="absolute top-4 right-4 bg-secondary text-secondary-foreground">
+              <Badge className="absolute top-4 right-4 bg-secondary text-secondary-foreground z-10">
                 {t('sponsored')}
               </Badge>
             )}
+            
+            {/* Carousel Controls */}
+            <button 
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-foreground p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+              aria-label="Image précédente"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            
+            <button 
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-foreground p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110"
+              aria-label="Image suivante"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+            
+            {/* Image Indicators */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    idx === currentImageIndex 
+                      ? 'bg-white w-8' 
+                      : 'bg-white/50 hover:bg-white/75'
+                  }`}
+                  aria-label={`Image ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8">

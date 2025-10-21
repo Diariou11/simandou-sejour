@@ -65,27 +65,28 @@ export default function Landing() {
         
         {/* Content */}
         <div className="container mx-auto text-center max-w-4xl relative z-10">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-4 md:mb-6 animate-slide-up drop-shadow-lg">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary-foreground mb-4 md:mb-6 drop-shadow-lg animate-logo-pulse">
             Simandou Séjour
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-primary-foreground/95 mb-8 md:mb-12 animate-slide-up px-2 drop-shadow-md">
             {t('slogan')}
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-2xl mx-auto animate-slide-up">
-            <Link to="/client-login" className="w-full">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center justify-center animate-slide-up">
+            <Link to="/client-login">
               <Button 
                 size="lg" 
-                className="w-full h-14 md:h-16 text-base md:text-lg bg-primary hover:bg-primary/90 shadow-strong backdrop-blur-sm font-bold"
+                className="w-full sm:w-auto px-8 md:px-12 h-14 md:h-16 text-base md:text-lg bg-primary hover:bg-primary/90 hover:scale-105 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
               >
                 {t('forTravelers')}
               </Button>
             </Link>
             
-            <Link to="/host-login" className="w-full">
+            <Link to="/host-login">
               <Button 
                 size="lg" 
-                className="w-full h-14 md:h-16 text-base md:text-lg bg-secondary hover:bg-secondary/90 shadow-strong backdrop-blur-sm font-bold"
+                className="w-full sm:w-auto px-8 md:px-12 h-14 md:h-16 text-base md:text-lg bg-secondary hover:bg-secondary/90 hover:scale-105 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
+                style={{ animationDelay: '0.1s' }}
               >
                 {t('forHosts')}
               </Button>
@@ -159,24 +160,29 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-16 px-4 gradient-secondary">
-        <div className="container mx-auto text-center max-w-3xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 md:mb-6 text-primary-foreground px-2">
+      <section className="relative py-16 md:py-20 px-4 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src={gradientBg1} alt="" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-accent/70 to-secondary/80"></div>
+        </div>
+        
+        <div className="container mx-auto text-center max-w-3xl relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 md:mb-8 text-white drop-shadow-lg px-2">
             Prêt à commencer ?
           </h2>
-          <p className="text-base md:text-lg text-primary-foreground/90 mb-6 md:mb-8 px-4">
+          <p className="text-lg md:text-xl text-white/95 mb-8 md:mb-10 px-4 drop-shadow-md font-medium">
             Rejoignez la première plateforme digitale d'hospitalité en Guinée
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center px-4">
             <Link to="/client-login" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto bg-card text-foreground hover:bg-card/90 shadow-medium">
+              <Button size="lg" className="w-full sm:w-auto px-8 h-14 bg-white text-primary hover:bg-white/90 hover:scale-105 shadow-strong font-bold transition-all duration-300">
                 {t('exploreOffers')}
               </Button>
             </Link>
             
             <Link to="/host-login" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-2 border-card text-primary-foreground hover:bg-card/10 shadow-medium">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto px-8 h-14 bg-white/10 backdrop-blur-sm border-2 border-white text-white hover:bg-white/20 hover:scale-105 shadow-strong font-bold transition-all duration-300">
                 {t('manageProperty')}
               </Button>
             </Link>

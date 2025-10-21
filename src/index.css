@@ -190,4 +190,19 @@ All colors MUST be HSL.
       opacity: 1;
     }
   }
+  
+  .animate-logo-pulse {
+    animation: logo-pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes logo-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+  }
 }

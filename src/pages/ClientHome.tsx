@@ -82,14 +82,53 @@ export default function ClientHome() {
           {/* Map Section */}
           <div className="mb-8">
             <h2 className="text-lg font-black text-foreground mb-4">Explorer sur la carte</h2>
-            <div className="bg-muted rounded-lg h-64 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 gradient-primary opacity-10"></div>
-              <div className="text-center z-10">
-                <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                <p className="text-foreground font-bold">Carte interactive</p>
-                <p className="text-sm text-muted-foreground">Découvrez les hébergements près de vous</p>
-                <Badge className="mt-2 bg-primary/10 text-primary gap-1">
-                  <Sparkles className="h-3 w-3" />
+            <div className="relative rounded-lg h-72 md:h-96 overflow-hidden shadow-medium">
+              <img 
+                src="/src/assets/guinea-map.jpg" 
+                alt="Carte de la Guinée" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+              
+              {/* Animated Pins */}
+              <div className="absolute top-1/4 left-1/3 animate-bounce" style={{ animationDelay: '0s' }}>
+                <div className="relative">
+                  <MapPin className="h-8 w-8 text-primary fill-primary drop-shadow-lg" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+              </div>
+              
+              <div className="absolute top-1/3 right-1/4 animate-bounce" style={{ animationDelay: '0.3s' }}>
+                <div className="relative">
+                  <MapPin className="h-8 w-8 text-secondary fill-secondary drop-shadow-lg" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary/30 rounded-full animate-ping"></div>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-1/3 left-1/2 animate-bounce" style={{ animationDelay: '0.6s' }}>
+                <div className="relative">
+                  <MapPin className="h-8 w-8 text-accent fill-accent drop-shadow-lg" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-accent/30 rounded-full animate-ping"></div>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-1/4 right-1/3 animate-bounce" style={{ animationDelay: '0.9s' }}>
+                <div className="relative">
+                  <MapPin className="h-8 w-8 text-primary fill-primary drop-shadow-lg" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+              </div>
+              
+              <div className="absolute top-1/2 left-1/4 animate-bounce" style={{ animationDelay: '1.2s' }}>
+                <div className="relative">
+                  <MapPin className="h-8 w-8 text-secondary fill-secondary drop-shadow-lg" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary/30 rounded-full animate-ping"></div>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
+                <Badge className="bg-primary/90 text-white gap-2 px-4 py-2 text-sm backdrop-blur-sm shadow-lg">
+                  <Sparkles className="h-4 w-4" />
                   Meilleur rapport qualité/prix selon IA
                 </Badge>
               </div>
