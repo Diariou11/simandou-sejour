@@ -5,10 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, Plus, Pencil, Trash2 } from 'lucide-react';
+import { Calendar, Plus, Pencil, Trash2, ChevronLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function HostPromotions() {
+  const navigate = useNavigate();
+  
   const activePromotions = [
     {
       id: 1,
@@ -102,9 +105,20 @@ export default function HostPromotions() {
       
       <div className="pt-24 px-4">
         <div className="container mx-auto max-w-2xl">
-          <h1 className="text-2xl font-black text-foreground mb-8">
-            Gestion des Promotions
-          </h1>
+          <div className="flex items-center gap-3 mb-8">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate('/host-home')}
+              className="gap-2"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Retour
+            </Button>
+            <h1 className="text-2xl font-black text-foreground">
+              Gestion des Promotions
+            </h1>
+          </div>
 
           {/* Create Promotion Form */}
           <Card className="p-6 mb-8">

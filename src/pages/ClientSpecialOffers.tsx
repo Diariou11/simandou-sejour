@@ -3,10 +3,12 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Sparkles, Clock, MapPin, Percent } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Sparkles, Clock, MapPin, Percent, ChevronLeft } from 'lucide-react';
 
 export default function ClientSpecialOffers() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const offers = [
     {
@@ -45,10 +47,21 @@ export default function ClientSpecialOffers() {
     <div className="min-h-screen pb-20 gradient-primary">
       <div className="pt-6 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-black text-foreground mb-2">
-            {t('specialOffers')}
-          </h1>
-          <p className="text-muted-foreground mb-6">
+          <div className="flex items-center gap-3 mb-2">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate('/client-home')}
+              className="gap-2"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t('back')}
+            </Button>
+            <h1 className="text-2xl md:text-3xl font-black text-foreground">
+              {t('specialOffers')}
+            </h1>
+          </div>
+          <p className="text-muted-foreground mb-6 ml-20">
             Offres personnalisées pour vous par notre IA
           </p>
 

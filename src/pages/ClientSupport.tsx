@@ -4,12 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { MessageSquare, Phone, Mail, HelpCircle, ChevronRight } from 'lucide-react';
+import { MessageSquare, Phone, Mail, HelpCircle, ChevronRight, ChevronLeft } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
 export default function ClientSupport() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,9 +41,20 @@ export default function ClientSupport() {
     <div className="min-h-screen pb-20 gradient-primary">
       <div className="pt-6 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-black text-foreground mb-6">
-            {t('support')}
-          </h1>
+          <div className="flex items-center gap-3 mb-6">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate('/client-home')}
+              className="gap-2"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t('back')}
+            </Button>
+            <h1 className="text-2xl md:text-3xl font-black text-foreground">
+              {t('support')}
+            </h1>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-4 mb-8">
             <Card className="p-4 hover:shadow-medium transition-smooth cursor-pointer group">

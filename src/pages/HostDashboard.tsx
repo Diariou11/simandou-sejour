@@ -3,10 +3,13 @@ import { HostBottomNav } from '@/components/HostBottomNav';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { BarChart3, Plus, TrendingUp, Sparkles, DollarSign, Calendar } from 'lucide-react';
+import { BarChart3, Plus, TrendingUp, Sparkles, DollarSign, Calendar, ChevronLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
 
 export default function HostDashboard() {
+  const navigate = useNavigate();
+  
   return (
     <div className="min-h-screen pb-20">
       <Header />
@@ -18,11 +21,22 @@ export default function HostDashboard() {
       <div className="relative z-10 pt-20 px-4">
         <div className="container mx-auto max-w-6xl py-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-black text-foreground mb-2">
-                Tableau de bord hôtelier
-              </h1>
-              <p className="text-sm md:text-base text-muted-foreground">Gérez vos hébergements avec l'IA</p>
+            <div className="flex items-center gap-3 w-full">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => navigate('/host-home')}
+                className="gap-2"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Retour
+              </Button>
+              <div className="flex-1">
+                <h1 className="text-2xl md:text-3xl font-black text-foreground mb-2">
+                  Tableau de bord hôtelier
+                </h1>
+                <p className="text-sm md:text-base text-muted-foreground">Gérez vos hébergements avec l'IA</p>
+              </div>
             </div>
             <Button className="w-full md:w-auto bg-primary hover:bg-primary/90 gap-2">
               <Plus className="h-5 w-5" />

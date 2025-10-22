@@ -72,11 +72,11 @@ export default function Landing() {
             {t('slogan')}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center justify-center animate-slide-up">
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-slide-up">
             <Link to="/client-login">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto px-6 md:px-8 h-12 md:h-14 text-base md:text-lg bg-primary hover:bg-primary/90 hover:scale-105 hover:-translate-y-1 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
+                className="w-full sm:w-auto px-6 h-11 text-sm sm:text-base bg-primary hover:bg-primary/90 hover:scale-110 hover:-translate-y-2 hover:shadow-strong shadow-medium backdrop-blur-sm font-bold transition-all duration-500 animate-fade-in"
               >
                 Je cherche un hébergement
               </Button>
@@ -85,7 +85,7 @@ export default function Landing() {
             <Link to="/host-login">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto px-6 md:px-8 h-12 md:h-14 text-base md:text-lg bg-secondary hover:bg-secondary/90 hover:scale-105 hover:-translate-y-1 shadow-strong backdrop-blur-sm font-bold transition-all duration-300 animate-fade-in"
+                className="w-full sm:w-auto px-6 h-11 text-sm sm:text-base bg-secondary hover:bg-secondary/90 hover:scale-110 hover:-translate-y-2 hover:shadow-strong shadow-medium backdrop-blur-sm font-bold transition-all duration-500 animate-fade-in"
                 style={{ animationDelay: '0.1s' }}
               >
                 Je propose un hébergement
@@ -136,10 +136,10 @@ export default function Landing() {
       {/* Host Features */}
       <section className="relative py-12 md:py-16 px-4 gradient-secondary overflow-hidden">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2 md:mb-3 text-foreground">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-2 md:mb-3 text-foreground dark:text-white">
             Pour les Responsables d'Hébergement
           </h2>
-          <p className="text-sm text-center text-muted-foreground mb-8 md:mb-12 animate-fade-in italic">
+          <p className="text-sm text-center text-muted-foreground dark:text-white/80 mb-8 md:mb-12 animate-fade-in italic font-medium">
             Hôtels • Motels • Résidences • Auberges
           </p>
           

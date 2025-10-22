@@ -90,47 +90,111 @@ export default function ClientHome() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
               
-              {/* Animated Pins */}
-              <div className="absolute top-1/4 left-1/3 animate-bounce" style={{ animationDelay: '0s' }}>
-                <div className="relative">
-                  <MapPin className="h-8 w-8 text-primary fill-primary drop-shadow-lg" />
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-primary/30 rounded-full animate-ping"></div>
+              {/* Animated Pins for each accommodation - positioned based on Guinea regions */}
+              {/* Conakry - Southwest coast */}
+              <div className="absolute top-[55%] left-[20%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '0s' }}>
+                  <MapPin className="h-7 w-7 text-primary fill-primary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-primary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Hôtel Sily National
                 </div>
               </div>
               
-              <div className="absolute top-1/3 right-1/4 animate-bounce" style={{ animationDelay: '0.3s' }}>
-                <div className="relative">
-                  <MapPin className="h-8 w-8 text-secondary fill-secondary drop-shadow-lg" />
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary/30 rounded-full animate-ping"></div>
+              <div className="absolute top-[58%] left-[18%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '0.2s' }}>
+                  <MapPin className="h-7 w-7 text-secondary fill-secondary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-secondary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-secondary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Résidence Nimba
                 </div>
               </div>
               
-              <div className="absolute bottom-1/3 left-1/2 animate-bounce" style={{ animationDelay: '0.6s' }}>
-                <div className="relative">
-                  <MapPin className="h-8 w-8 text-accent fill-accent drop-shadow-lg" />
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-accent/30 rounded-full animate-ping"></div>
+              {/* Kindia - North of Conakry */}
+              <div className="absolute top-[40%] left-[25%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '0.4s' }}>
+                  <MapPin className="h-7 w-7 text-accent fill-accent drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-accent/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-accent text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Résidence Kakoulima
                 </div>
               </div>
               
-              <div className="absolute bottom-1/4 right-1/3 animate-bounce" style={{ animationDelay: '0.9s' }}>
-                <div className="relative">
-                  <MapPin className="h-8 w-8 text-primary fill-primary drop-shadow-lg" />
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-primary/30 rounded-full animate-ping"></div>
+              <div className="absolute top-[42%] left-[22%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '0.6s' }}>
+                  <MapPin className="h-7 w-7 text-primary fill-primary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-primary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Résidence Loos
                 </div>
               </div>
               
-              <div className="absolute top-1/2 left-1/4 animate-bounce" style={{ animationDelay: '1.2s' }}>
-                <div className="relative">
-                  <MapPin className="h-8 w-8 text-secondary fill-secondary drop-shadow-lg" />
-                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-6 bg-secondary/30 rounded-full animate-ping"></div>
+              {/* Labé - North center (Fouta Djallon) */}
+              <div className="absolute top-[25%] left-[40%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '0.8s' }}>
+                  <MapPin className="h-7 w-7 text-secondary fill-secondary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-secondary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-secondary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Hôtel Fouta Djallon
                 </div>
               </div>
               
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-                <Badge className="bg-primary/90 text-white gap-2 px-4 py-2 text-sm backdrop-blur-sm shadow-lg">
-                  <Sparkles className="h-4 w-4" />
-                  Meilleur rapport qualité/prix selon IA
-                </Badge>
+              <div className="absolute top-[28%] left-[38%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '1s' }}>
+                  <MapPin className="h-7 w-7 text-accent fill-accent drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-accent/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-accent text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Auberge Tinkisso
+                </div>
+              </div>
+              
+              {/* Kankan - East center */}
+              <div className="absolute top-[45%] left-[65%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '1.2s' }}>
+                  <MapPin className="h-7 w-7 text-primary fill-primary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-primary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Motel Kankan
+                </div>
+              </div>
+              
+              {/* N'Zérékoré - Southeast (forest region) */}
+              <div className="absolute top-[68%] left-[70%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '1.4s' }}>
+                  <MapPin className="h-7 w-7 text-secondary fill-secondary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-secondary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-secondary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Auberge Konkoure
+                </div>
+              </div>
+              
+              {/* Boké - Northwest */}
+              <div className="absolute top-[20%] left-[15%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '1.6s' }}>
+                  <MapPin className="h-7 w-7 text-accent fill-accent drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-accent/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-accent text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Motel Badiar
+                </div>
+              </div>
+              
+              <div className="absolute top-[35%] left-[55%] group">
+                <div className="relative animate-bounce" style={{ animationDelay: '1.8s' }}>
+                  <MapPin className="h-7 w-7 text-primary fill-primary drop-shadow-lg cursor-pointer transition-transform hover:scale-125" />
+                  <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-5 h-5 bg-primary/30 rounded-full animate-ping"></div>
+                </div>
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-primary text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+                  Hôtel Soumba
+                </div>
               </div>
             </div>
           </div>

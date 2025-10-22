@@ -1,14 +1,17 @@
 import { Header } from '@/components/Header';
 import { ClientBottomNav } from '@/components/ClientBottomNav';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Bell, CheckCircle, Gift, MessageSquare, Sparkles } from 'lucide-react';
+import { Bell, CheckCircle, Gift, MessageSquare, Sparkles, ChevronLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 import gradientBg1 from '@/assets/gradient-bg-1.jpg';
 
 export default function ClientNotifications() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   
   const notifications = [
     {
@@ -56,8 +59,17 @@ export default function ClientNotifications() {
         
         <div className="relative z-10 pt-20 px-4">
           <div className="container mx-auto max-w-4xl py-6">
-            <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl md:text-3xl font-black text-foreground">
+            <div className="flex items-center gap-3 mb-6">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => navigate('/client-home')}
+                className="gap-2"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                {t('back')}
+              </Button>
+              <h1 className="text-2xl md:text-3xl font-black text-foreground flex-1">
                 {t('notifications')}
               </h1>
               <Badge className="bg-primary/10 text-primary">

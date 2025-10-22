@@ -1,11 +1,14 @@
 import { ClientBottomNav } from '@/components/ClientBottomNav';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { CreditCard, Smartphone, TrendingDown, TrendingUp } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { CreditCard, Smartphone, TrendingDown, TrendingUp, ChevronLeft } from 'lucide-react';
 
 export default function ClientTransactions() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const transactions = [
     {
@@ -41,9 +44,20 @@ export default function ClientTransactions() {
     <div className="min-h-screen pb-20 gradient-secondary">
       <div className="pt-6 px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-2xl md:text-3xl font-black text-foreground mb-6">
-            {t('transactionHistory')}
-          </h1>
+          <div className="flex items-center gap-3 mb-6">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate('/client-home')}
+              className="gap-2"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              {t('back')}
+            </Button>
+            <h1 className="text-2xl md:text-3xl font-black text-foreground">
+              {t('transactionHistory')}
+            </h1>
+          </div>
 
           <Card className="p-4 md:p-6 mb-6 bg-primary/5 border-primary/20">
             <div className="flex items-center justify-between">
