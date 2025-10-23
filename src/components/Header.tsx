@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { LanguageSelector } from './LanguageSelector';
+import { ThemeToggle } from './ThemeToggle';
 import logoSimandou from '@/assets/logo-simandou.svg';
 
 export const Header = () => {
@@ -10,7 +11,10 @@ export const Header = () => {
           <img src={logoSimandou} alt="Simandou Séjour" className="h-8 md:h-10" />
         </Link>
         
-        <LanguageSelector />
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <LanguageSelector />
+        </div>
       </div>
     </header>
   );
