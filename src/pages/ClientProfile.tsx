@@ -12,6 +12,7 @@ import { useState } from 'react';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
+import profileMamadou from '@/assets/profile-mamadou.jpg';
 import { useTheme } from '@/components/ThemeProvider';
 
 export default function ClientProfile() {
@@ -55,11 +56,11 @@ export default function ClientProfile() {
               {/* Avatar Section */}
               <Card className="p-6">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="h-20 w-20 rounded-full bg-primary/10 flex items-center justify-center">
-                    <User className="h-10 w-10 text-primary" />
+                  <div className="h-20 w-20 rounded-full overflow-hidden">
+                    <img src={profileMamadou} alt="Mamadou Diaouné" className="w-full h-full object-cover" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-foreground">Mamadou Diallo</h2>
+                    <h2 className="text-xl font-bold text-foreground">Mamadou Diaouné</h2>
                     <p className="text-sm text-muted-foreground">Membre depuis Mars 2024</p>
                   </div>
                 </div>
@@ -70,7 +71,7 @@ export default function ClientProfile() {
                       <User className="h-4 w-4" />
                       {t('fullName')}
                     </Label>
-                    <Input id="name" defaultValue="Mamadou Diallo" />
+                    <Input id="name" defaultValue="Mamadou Diaouné" />
                   </div>
                   
                   <div>

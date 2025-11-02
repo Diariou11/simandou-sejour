@@ -59,22 +59,26 @@ export default function ClientNotifications() {
         
         <div className="relative z-10 pt-20 px-4">
           <div className="container mx-auto max-w-4xl py-6">
-            <div className="flex items-center gap-3 mb-6">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={() => navigate('/client-home')}
-                className="gap-2"
-              >
-                <ChevronLeft className="h-4 w-4" />
-                {t('back')}
-              </Button>
-              <h1 className="text-2xl md:text-3xl font-black text-foreground flex-1">
-                {t('notifications')}
-              </h1>
-              <Badge className="bg-primary/10 text-primary">
-                {notifications.length} nouvelles
-              </Badge>
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => navigate('/client-home')}
+                  className="gap-2"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  {t('back')}
+                </Button>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <h1 className="text-2xl md:text-3xl font-black text-foreground">
+                  {t('notifications')}
+                </h1>
+                <Badge className="bg-primary/10 text-primary whitespace-nowrap">
+                  {notifications.length} nouvelles
+                </Badge>
+              </div>
             </div>
             
             <Tabs defaultValue="all" className="w-full">

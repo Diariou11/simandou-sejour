@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -7,7 +7,7 @@ import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Message {
-  type: 'user' | 'bot';
+  type: 'user' | 'assistant';
   content: string;
 }
 
@@ -57,42 +57,103 @@ const predefinedQuestions = [
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'bot', content: "Bonjour ! Je suis l'assistant IA de Simandou Séjour. Comment puis-je vous aider aujourd'hui ?" }
+    { type: 'assistant', content: "Bonjour ! Je suis MOB, l'assistant IA de Simandou Séjour. Comment puis-je vous aider aujourd'hui ?" }
   ]);
   const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
 
-  const handleQuestionClick = (qa: typeof predefinedQuestions[0]) => {
-    setMessages(prev => [
-      ...prev,
-      { type: 'user', content: qa.question },
-      { type: 'bot', content: qa.answer }
-    ]);
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  const handleQuestionClick = async (qa: typeof predefinedQuestions[0]) => {
+    await handleSend(qa.question);
   };
 
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+  const handleSend = async (message?: string) => {
+    const messageToSend = message || inputValue.trim();
+    if (!messageToSend) return;
 
-    const userMessage = inputValue.trim();
-    setMessages(prev => [...prev, { type: 'user', content: userMessage }]);
+    const userMsg: Message = { type: 'user', content: messageToSend };
+    setMessages(prev => [...prev, userMsg]);
     setInputValue('');
+    setIsLoading(true);
 
-    // Recherche d'une question similaire
-    const matchedQ = predefinedQuestions.find(q => 
-      q.question.toLowerCase().includes(userMessage.toLowerCase()) ||
-      userMessage.toLowerCase().includes(q.question.toLowerCase().split(' ')[0])
-    );
+    try {
+      const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/mob-chat`;
+      const response = await fetch(CHAT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ messages: [...messages, userMsg] }),
+      });
 
-    setTimeout(() => {
-      if (matchedQ) {
-        setMessages(prev => [...prev, { type: 'bot', content: matchedQ.answer }]);
-      } else {
-        setMessages(prev => [...prev, { 
-          type: 'bot', 
-          content: "Je ne suis pas sûr de comprendre votre question. Voici quelques questions fréquentes qui pourraient vous aider. N'hésitez pas à reformuler ou à me poser une autre question !" 
-        }]);
+      if (!response.ok || !response.body) {
+        throw new Error("Échec de la connexion au service IA");
       }
-    }, 800);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let textBuffer = "";
+      let streamDone = false;
+      let assistantContent = "";
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        textBuffer += decoder.decode(value, { stream: true });
+
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf("\n")) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
+
+          if (line.endsWith("\r")) line = line.slice(0, -1);
+          if (line.startsWith(":") || line.trim() === "") continue;
+          if (!line.startsWith("data: ")) continue;
+
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === "[DONE]") {
+            streamDone = true;
+            break;
+          }
+
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const content = parsed.choices?.[0]?.delta?.content as string | undefined;
+            if (content) {
+              assistantContent += content;
+              setMessages(prev => {
+                const last = prev[prev.length - 1];
+                if (last?.type === "assistant") {
+                  return prev.map((m, i) => 
+                    i === prev.length - 1 ? { ...m, content: assistantContent } : m
+                  );
+                }
+                return [...prev, { type: "assistant", content: assistantContent }];
+              });
+            }
+          } catch {
+            textBuffer = line + "\n" + textBuffer;
+            break;
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Erreur chatbot:", error);
+      setMessages(prev => [
+        ...prev,
+        { type: "assistant", content: "Désolé, une erreur s'est produite. Veuillez réessayer." }
+      ]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -115,7 +176,7 @@ export function ChatBot() {
           <div className="gradient-primary p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-primary-foreground" />
-              <h3 className="font-black text-primary-foreground">Assistant IA</h3>
+              <h3 className="font-black text-primary-foreground">MOB - Assistant IA</h3>
             </div>
             <Button
               onClick={() => setIsOpen(false)}
@@ -128,7 +189,7 @@ export function ChatBot() {
           </div>
 
           {/* Messages */}
-          <ScrollArea className="flex-1 p-4">
+          <ScrollArea className="flex-1 p-4" ref={scrollRef}>
             <div className="space-y-4">
               {messages.map((msg, idx) => (
                 <div
@@ -152,12 +213,13 @@ export function ChatBot() {
                 <div className="space-y-2 pt-4">
                   <p className="text-sm text-muted-foreground font-bold">Questions fréquentes :</p>
                   {predefinedQuestions.slice(0, 5).map((qa, idx) => (
-                    <Button
-                      key={idx}
-                      onClick={() => handleQuestionClick(qa)}
-                      variant="outline"
-                      className="w-full justify-start text-left h-auto py-2 px-3 text-sm hover:bg-primary/10 transition-smooth"
-                    >
+                  <Button
+                    key={idx}
+                    onClick={() => handleQuestionClick(qa)}
+                    variant="outline"
+                    disabled={isLoading}
+                    className="w-full justify-start text-left h-auto py-2 px-3 text-sm hover:bg-primary/10 transition-smooth"
+                  >
                       {qa.question}
                     </Button>
                   ))}
@@ -172,11 +234,17 @@ export function ChatBot() {
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                onKeyDown={(e) => e.key === 'Enter' && !isLoading && handleSend()}
                 placeholder="Posez votre question..."
+                disabled={isLoading}
                 className="flex-1"
               />
-              <Button onClick={handleSend} size="icon" className="bg-primary hover:bg-primary/90">
+              <Button 
+                onClick={() => handleSend()} 
+                size="icon" 
+                disabled={isLoading}
+                className="bg-primary hover:bg-primary/90"
+              >
                 <Send className="h-4 w-4" />
               </Button>
             </div>

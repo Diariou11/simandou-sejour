@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
 import hotelFoutaDjallon from '@/assets/accommodations/hotel-fouta-djallon.jpg';
 import residenceNimba from '@/assets/accommodations/residence-nimba.jpg';
+import motelBadiar from '@/assets/accommodations/motel-badiar.jpg';
+import aubergeKonkoure from '@/assets/accommodations/auberge-konkoure.jpg';
 
 export default function ClientFavorites() {
   const { t } = useLanguage();
@@ -30,6 +32,24 @@ export default function ClientFavorites() {
       reviews: 85,
       price: 380000,
       image: residenceNimba
+    },
+    {
+      id: '4',
+      name: 'Motel Badiar',
+      city: 'Koundara',
+      rating: 4.0,
+      reviews: 45,
+      price: 180000,
+      image: motelBadiar
+    },
+    {
+      id: '3',
+      name: 'Auberge Konkouré',
+      city: 'Kindia',
+      rating: 4.3,
+      reviews: 67,
+      price: 250000,
+      image: aubergeKonkoure
     }
   ]);
 

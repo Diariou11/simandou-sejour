@@ -23,6 +23,7 @@ import HostLogin from "./pages/HostLogin";
 import HostHome from "./pages/HostHome";
 import HostMessages from "./pages/HostMessages";
 import ClientFavorites from "./pages/ClientFavorites";
+import ClientCompare from "./pages/ClientCompare";
 import ClientNotifications from "./pages/ClientNotifications";
 import ClientProfile from "./pages/ClientProfile";
 import ClientReservations from "./pages/ClientReservations";
@@ -85,6 +86,7 @@ const App = () => (
             
             {/* Client Additional Routes */}
             <Route path="/client-favorites" element={<ClientFavorites />} />
+            <Route path="/client-compare" element={<ClientCompare />} />
             <Route path="/client-notifications" element={<ClientNotifications />} />
             <Route path="/client-profile" element={<ClientProfile />} />
             <Route path="/client-reservations" element={<ClientReservations />} />

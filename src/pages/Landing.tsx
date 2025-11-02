@@ -165,6 +165,133 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-12 md:py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center p-4">
+              <div className="text-3xl md:text-4xl font-black text-primary mb-2 animate-fade-in">150+</div>
+              <div className="text-sm text-muted-foreground">Hébergements</div>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-3xl md:text-4xl font-black text-secondary mb-2 animate-fade-in">5,200+</div>
+              <div className="text-sm text-muted-foreground">Clients satisfaits</div>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-3xl md:text-4xl font-black text-accent mb-2 animate-fade-in">12</div>
+              <div className="text-sm text-muted-foreground">Villes couvertes</div>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-3xl md:text-4xl font-black text-primary mb-2 animate-fade-in">98%</div>
+              <div className="text-sm text-muted-foreground">Taux satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - Clients */}
+      <section className="py-12 md:py-16 px-4 bg-background">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-12 text-foreground">
+            Comment ça marche pour les clients ?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Recherchez</h3>
+                <p className="text-sm text-muted-foreground">Utilisez notre moteur de recherche intelligent pour trouver l'hébergement idéal selon vos critères</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Comparez</h3>
+                <p className="text-sm text-muted-foreground">Notre IA vous aide à comparer les prix et équipements pour faire le meilleur choix</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-accent/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Réservez</h3>
+                <p className="text-sm text-muted-foreground">Confirmez votre réservation en quelques clics avec paiement 100% sécurisé</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works - Hosts */}
+      <section className="py-12 md:py-16 px-4 bg-muted/30">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-center mb-12 text-foreground">
+            Comment ça marche pour les hôteliers ?
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Inscrivez-vous</h3>
+                <p className="text-sm text-muted-foreground">Créez votre compte professionnel et ajoutez vos hébergements en quelques minutes</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.1s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Gérez facilement</h3>
+                <p className="text-sm text-muted-foreground">Tableau de bord centralisé pour gérer calendrier, tarifs et réservations</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-accent/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Augmentez revenus</h3>
+                <p className="text-sm text-muted-foreground">Notre IA optimise vos prix et vous gagnez en visibilité</p>
+              </div>
+            </Card>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-primary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Communiquez</h3>
+                <p className="text-sm text-muted-foreground">Messagerie intégrée pour échanger directement avec vos clients</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-secondary/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Analysez</h3>
+                <p className="text-sm text-muted-foreground">Rapports détaillés et statistiques pour suivre vos performances</p>
+              </div>
+            </Card>
+            
+            <Card className="p-6 text-center relative overflow-hidden animate-slide-up" style={{ animationDelay: '0.5s' }}>
+              <div className="absolute top-0 right-0 w-16 h-16 bg-accent/10 rounded-full -mr-8 -mt-8"></div>
+              <div className="relative">
+                <div className="w-12 h-12 bg-accent text-accent-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">6</div>
+                <h3 className="font-bold text-lg mb-2 text-foreground">Développez</h3>
+                <p className="text-sm text-muted-foreground">Passez au mode Premium pour encore plus de visibilité</p>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative py-16 md:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -195,46 +322,6 @@ export default function Landing() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-card/50 border-t border-border">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-            <div>
-              <h4 className="font-bold text-foreground mb-3">À propos</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-smooth">{t('about')}</Link></li>
-                <li><Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-smooth">{t('howItWorks')}</Link></li>
-                <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-smooth">{t('contact')}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-3">Légal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/terms" className="text-muted-foreground hover:text-primary transition-smooth">{t('terms')}</Link></li>
-                <li><Link to="/privacy" className="text-muted-foreground hover:text-primary transition-smooth">{t('privacy')}</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-3">Support</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/client-support" className="text-muted-foreground hover:text-primary transition-smooth">Centre d'aide</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold text-foreground mb-3">Suivez-nous</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>Facebook</li>
-                <li>Instagram</li>
-                <li>Twitter</li>
-              </ul>
-            </div>
-          </div>
-          <div className="text-center text-sm text-muted-foreground border-t border-border pt-6">
-            © 2025 Simandou Séjour. Tous droits réservés.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

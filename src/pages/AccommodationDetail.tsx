@@ -165,19 +165,20 @@ export default function AccommodationDetail() {
                 </div>
               </Card>
 
+              <Card className="p-4 bg-primary/5 border-primary/20">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-sm mb-2 text-foreground">💡 Comparaison IA</p>
+                    <p className="text-sm text-muted-foreground">
+                      Dans un établissement similaire à 15km (Motel Safari), le tarif pour une nuit est de <strong className="text-primary">280 000 GNF</strong>, mais il est situé en dehors de la zone urbaine principale.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
               {accommodation.aiPriceSuggestion && (
-                <Card className="p-6 bg-primary/5 border-primary/20">
-                  <div className="flex items-start gap-3">
-                    <Sparkles className="h-6 w-6 text-primary mt-1" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2 text-foreground">
-                        {t('aiSuggested')}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-3">
-                        Basé sur la demande locale et les tendances du marché, notre IA suggère un prix optimal de <span className="font-bold text-primary">{formattedAiPrice} GNF</span> par nuit.
-                      </p>
-                      <Badge className="bg-primary/10 text-primary">
-                        Économisez {new Intl.NumberFormat('fr-GN').format(accommodation.price - accommodation.aiPriceSuggestion)} GNF
+                <Card className="p-6 bg-primary/5 border-primary/20" style={{display: 'none'}}>
                       </Badge>
                     </div>
                   </div>
