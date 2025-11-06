@@ -62,6 +62,7 @@ export function ChatBot() {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const { language } = useLanguage();
 
   useEffect(() => {
@@ -69,6 +70,22 @@ export function ChatBot() {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (chatContainerRef.current && !chatContainerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   const handleQuestionClick = async (qa: typeof predefinedQuestions[0]) => {
     await handleSend(qa.question);
@@ -171,7 +188,7 @@ export function ChatBot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <Card className="fixed bottom-6 right-6 w-[90vw] max-w-md h-[600px] shadow-strong z-50 flex flex-col animate-scale-in">
+        <Card ref={chatContainerRef} className="fixed bottom-6 right-6 w-[90vw] max-w-md h-[600px] shadow-strong z-50 flex flex-col animate-scale-in">
           {/* Header */}
           <div className="gradient-primary p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-2">

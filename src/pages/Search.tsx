@@ -7,11 +7,13 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { mockAccommodations, cities } from '@/data/mockData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Search as SearchIcon, Sparkles } from 'lucide-react';
+import { Search as SearchIcon, Sparkles, ChevronLeft } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [searchCity, setSearchCity] = useState('');
   const [filteredResults, setFilteredResults] = useState(mockAccommodations);
 
@@ -33,6 +35,16 @@ export default function Search() {
       
       <div className="pt-20 px-4">
         <div className="container mx-auto max-w-6xl">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate(-1)}
+            className="gap-2 mb-4"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Retour
+          </Button>
+
           {/* Search Bar */}
           <div className="bg-card rounded-2xl shadow-strong p-4 md:p-6 mb-6 md:mb-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">

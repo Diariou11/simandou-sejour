@@ -104,18 +104,6 @@ export default function ClientLogin() {
                 </Button>
               </Link>
             </form>
-
-            <footer className="mt-8 pt-6 border-t text-center space-y-2">
-              <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
-                <Link to="/privacy" className="hover:text-primary">Politique de confidentialité</Link>
-                <Link to="/terms" className="hover:text-primary">Conditions d'utilisation</Link>
-                <Link to="/contact" className="hover:text-primary">Contact</Link>
-              </div>
-              <div className="text-xs text-muted-foreground space-y-1">
-                <p>support@simandousejour.com</p>
-                <p>+224 664 040 080</p>
-              </div>
-            </footer>
           </Card>
         </div>
       </div>

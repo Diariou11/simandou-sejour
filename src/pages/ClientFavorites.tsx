@@ -2,10 +2,10 @@ import { Header } from '@/components/Header';
 import { ClientBottomNav } from '@/components/ClientBottomNav';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, MapPin, Star } from 'lucide-react';
+import { Heart, MapPin, Star, ChevronLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
 import hotelFoutaDjallon from '@/assets/accommodations/hotel-fouta-djallon.jpg';
 import residenceNimba from '@/assets/accommodations/residence-nimba.jpg';
@@ -14,6 +14,7 @@ import aubergeKonkoure from '@/assets/accommodations/auberge-konkoure.jpg';
 
 export default function ClientFavorites() {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [favorites] = useState([
     {
       id: '1',
@@ -64,6 +65,16 @@ export default function ClientFavorites() {
         
         <div className="relative z-10 pt-20 px-4">
           <div className="container mx-auto max-w-4xl py-6">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate(-1)}
+              className="gap-2 mb-4"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Retour
+            </Button>
+
             <h1 className="text-2xl md:text-3xl font-black text-foreground mb-6">
               {t('favorites')}
             </h1>

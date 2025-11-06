@@ -84,9 +84,14 @@ export default function ClientHome() {
             <h2 className="text-lg font-black text-foreground mb-4">Explorer sur la carte</h2>
             <div className="relative rounded-lg h-72 md:h-96 overflow-hidden shadow-medium">
               <img 
-                src="/src/assets/guinea-map.jpg" 
+                src={new URL('/src/assets/guinea-map.jpg', import.meta.url).href}
                 alt="Carte de la Guinée" 
                 className="w-full h-full object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  console.log('Map image failed to load');
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
               

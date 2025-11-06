@@ -138,20 +138,81 @@ export default function HostHome() {
             </Card>
           </div>
 
-          {/* Footer */}
-          <footer className="mt-12 pt-8 border-t text-center space-y-2">
-            <div className="flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
-              <Link to="/privacy" className="hover:text-primary">Politique de Confidentialité</Link>
-              <span>|</span>
-              <Link to="/terms" className="hover:text-primary">Conditions d'utilisation</Link>
-              <span>|</span>
-              <Link to="/contact" className="hover:text-primary">Contact</Link>
+          {/* Additional Features */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <Card className="p-6 bg-gradient-to-br from-primary/5 to-secondary/5">
+              <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-primary" />
+                Optimisation IA en Temps Réel
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Notre intelligence artificielle analyse en temps réel le marché, vos concurrents et les tendances pour vous suggérer les meilleurs prix et stratégies. Augmentez votre chiffre d'affaires jusqu'à 40% avec nos recommandations personnalisées.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✓</span>
+                  <span>Analyse de la demande locale en temps réel</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✓</span>
+                  <span>Suggestions de prix dynamiques</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary">✓</span>
+                  <span>Alertes sur les opportunités de marché</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 bg-gradient-to-br from-secondary/5 to-accent/5">
+              <h3 className="font-bold text-foreground mb-3 flex items-center gap-2">
+                <Users className="h-5 w-5 text-secondary" />
+                Gestion Simplifiée & Automatisée
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Gérez toutes vos réservations, disponibilités et services depuis une seule interface intuitive. Automatisez les tâches répétitives et concentrez-vous sur l'essentiel : vos clients.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary">✓</span>
+                  <span>Calendrier synchronisé multi-plateformes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary">✓</span>
+                  <span>Notifications automatiques aux clients</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-secondary">✓</span>
+                  <span>Facturation et paiements intégrés</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+
+          {/* Success Metrics */}
+          <Card className="p-6 bg-gradient-to-r from-primary/10 to-accent/10 mb-8">
+            <h3 className="font-bold text-foreground mb-4 text-center">
+              Rejoignez des centaines d'établissements qui ont transformé leur activité
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div>
+                <p className="text-3xl font-black text-primary mb-1">+40%</p>
+                <p className="text-xs text-muted-foreground">Taux d'occupation moyen</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-secondary mb-1">-60%</p>
+                <p className="text-xs text-muted-foreground">Temps de gestion</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-accent mb-1">+35%</p>
+                <p className="text-xs text-muted-foreground">Revenus moyens</p>
+              </div>
+              <div>
+                <p className="text-3xl font-black text-primary mb-1">4.8/5</p>
+                <p className="text-xs text-muted-foreground">Satisfaction clients</p>
+              </div>
             </div>
-            <div className="text-xs text-muted-foreground space-y-1">
-              <p>support@simandousejour.com | +224 664 040 080</p>
-              <p>© 2025 Simandou Séjour. Tous droits réservés.</p>
-            </div>
-          </footer>
+          </Card>
         </div>
       </div>
     </div>
