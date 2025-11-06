@@ -13,30 +13,8 @@ const aiTips = [
   "✨ IA : Proposez des services additionnels (restaurant, spa, navette). Cela augmente le panier moyen de 25 %."
 ];
 
-const testimonials = [
-  {
-    name: "Mamadou Diallo",
-    role: "Gérant – Hôtel Fouta Djallon",
-    text: "Grâce à Simandou Séjour, j'ai augmenté mon taux d'occupation de 30 % en 3 mois. L'IA m'aide à ajuster mes prix au bon moment.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
-  },
-  {
-    name: "Aissata Camara",
-    role: "Directrice – Résidence Nimba",
-    text: "La gestion des réservations est devenue simple et rapide. Je gagne du temps et mes clients sont plus satisfaits.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400"
-  },
-  {
-    name: "Ibrahima Bah",
-    role: "Responsable – Auberge Konkouré",
-    text: "Les conseils IA sont précieux. J'ai découvert que répondre aux avis clients boostait vraiment mes réservations.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400"
-  }
-];
-
 export default function HostHome() {
   const [currentTipIndex, setCurrentTipIndex] = useState(0);
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   useEffect(() => {
     const tipInterval = setInterval(() => {
@@ -44,14 +22,6 @@ export default function HostHome() {
     }, 3000);
 
     return () => clearInterval(tipInterval);
-  }, []);
-
-  useEffect(() => {
-    const testimonialInterval = setInterval(() => {
-      setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(testimonialInterval);
   }, []);
 
   return (
@@ -112,31 +82,6 @@ export default function HostHome() {
               Ajouter un hébergement
             </Button>
           </Link>
-
-          {/* Testimonials */}
-          <div className="mb-8">
-            <h2 className="text-xl font-black text-foreground mb-4">Témoignages</h2>
-            <Card className="p-6 animate-fade-in">
-              <div className="flex items-start gap-4">
-                <img
-                  src={testimonials[currentTestimonialIndex].image}
-                  alt={testimonials[currentTestimonialIndex].name}
-                  className="w-16 h-16 rounded-full object-cover flex-shrink-0"
-                />
-                <div>
-                  <p className="text-foreground mb-3 italic">
-                    "{testimonials[currentTestimonialIndex].text}"
-                  </p>
-                  <p className="font-bold text-foreground">
-                    {testimonials[currentTestimonialIndex].name}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {testimonials[currentTestimonialIndex].role}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </div>
 
           {/* Additional Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
