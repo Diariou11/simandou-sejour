@@ -7,7 +7,7 @@ import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface Message {
-  type: 'user' | 'assistant';
+  role: 'user' | 'assistant';
   content: string;
 }
 
@@ -57,7 +57,7 @@ const predefinedQuestions = [
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { type: 'assistant', content: "Bonjour ! Je suis MOB, l'assistant IA de Simandou Séjour. Comment puis-je vous aider aujourd'hui ?" }
+    { role: 'assistant', content: "Bonjour ! Je suis MOB, l'assistant IA de Simandou Séjour. Comment puis-je vous aider aujourd'hui ?" }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -95,7 +95,7 @@ export function ChatBot() {
     const messageToSend = message || inputValue.trim();
     if (!messageToSend) return;
 
-    const userMsg: Message = { type: 'user', content: messageToSend };
+    const userMsg: Message = { role: 'user', content: messageToSend };
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsLoading(true);
@@ -148,12 +148,12 @@ export function ChatBot() {
               assistantContent += content;
               setMessages(prev => {
                 const last = prev[prev.length - 1];
-                if (last?.type === "assistant") {
+                if (last?.role === "assistant") {
                   return prev.map((m, i) => 
                     i === prev.length - 1 ? { ...m, content: assistantContent } : m
                   );
                 }
-                return [...prev, { type: "assistant", content: assistantContent }];
+                return [...prev, { role: "assistant", content: assistantContent }];
               });
             }
           } catch {
@@ -166,7 +166,7 @@ export function ChatBot() {
       console.error("Erreur chatbot:", error);
       setMessages(prev => [
         ...prev,
-        { type: "assistant", content: "Désolé, une erreur s'est produite. Veuillez réessayer." }
+        { role: "assistant", content: "Désolé, une erreur s'est produite. Veuillez réessayer." }
       ]);
     } finally {
       setIsLoading(false);
@@ -211,11 +211,11 @@ export function ChatBot() {
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in`}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in`}
                 >
                   <div
                     className={`max-w-[80%] p-3 rounded-lg ${
-                      msg.type === 'user'
+                      msg.role === 'user'
                         ? 'bg-primary text-primary-foreground'
                         : 'bg-muted text-foreground'
                     }`}
