@@ -177,13 +177,6 @@ export default function AccommodationDetail() {
                 </div>
               </Card>
 
-              {accommodation.aiPriceSuggestion && (
-                <Card className="p-6 bg-primary/5 border-primary/20" style={{display: 'none'}}>
-                      </Badge>
-                    </div>
-                  </div>
-                </Card>
-              )}
             </div>
 
             {/* Booking Card */}
