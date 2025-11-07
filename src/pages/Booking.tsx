@@ -1,16 +1,17 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { mockAccommodations } from '@/data/mockData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { CreditCard, Smartphone, Shield, Sparkles } from 'lucide-react';
+import { CreditCard, Smartphone, Shield, Sparkles, ChevronLeft } from 'lucide-react';
 import { toast } from 'sonner';
 
 export default function Booking() {
   const { id } = useParams();
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const accommodation = mockAccommodations.find(a => a.id === id);
 
   if (!accommodation) return null;
@@ -29,6 +30,16 @@ export default function Booking() {
       
       <div className="pt-24 px-4">
         <div className="container mx-auto max-w-4xl">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate(-1)}
+            className="mb-4 gap-2"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Retour
+          </Button>
+
           <h1 className="text-3xl font-black text-foreground mb-8 text-center">
             Finaliser votre réservation
           </h1>

@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -16,6 +16,7 @@ import hotelBathroom from '@/assets/interior/hotel-bathroom-1.jpg';
 export default function AccommodationDetail() {
   const { id } = useParams();
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const accommodation = mockAccommodations.find(a => a.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -75,6 +76,16 @@ export default function AccommodationDetail() {
       
       <div className="pt-20 px-4">
         <div className="container mx-auto max-w-6xl">
+          {/* Bouton Retour */}
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate(-1)}
+            className="mb-4 gap-2"
+          >
+            <ChevronLeftIcon className="h-4 w-4" />
+            Retour
+          </Button>
           {/* Hero Image Carousel */}
           <div className="relative h-72 md:h-96 bg-muted rounded-2xl overflow-hidden mb-8 shadow-strong group">
             <img 

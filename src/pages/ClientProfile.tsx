@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
-import { User, Mail, Phone, MapPin, Bell, Globe, Moon, Sparkles, LogOut } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Bell, Globe, Moon, Sparkles, LogOut, ChevronLeft } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useState } from 'react';
 import gradientBg2 from '@/assets/gradient-bg-2.jpg';
@@ -48,9 +48,20 @@ export default function ClientProfile() {
         
         <div className="relative z-10 pt-20 px-4">
           <div className="container mx-auto max-w-4xl py-6">
-            <h1 className="text-2xl md:text-3xl font-black text-foreground mb-6">
+          <div className="mb-6">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate('/client-home')}
+              className="gap-2 mb-2"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Retour
+            </Button>
+            <h1 className="text-2xl md:text-3xl font-black text-foreground mb-2">
               {t('profile')}
             </h1>
+          </div>
             
             <div className="space-y-4">
               {/* Avatar Section */}
