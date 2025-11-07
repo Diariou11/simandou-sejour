@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ChatBot } from "./components/ChatBot";
+import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import Landing from "./pages/Landing";
 import Search from "./pages/Search";
 import AccommodationDetail from "./pages/AccommodationDetail";
@@ -54,6 +55,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <ChatBot />
+        <PWAInstallPrompt />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Landing />} />
