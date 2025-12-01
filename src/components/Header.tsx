@@ -3,6 +3,7 @@ import { LanguageSelector } from './LanguageSelector';
 import { ThemeToggle } from './ThemeToggle';
 import { ClientHamburgerMenu } from './ClientHamburgerMenu';
 import { HostHamburgerMenu } from './HostHamburgerMenu';
+import { NotificationBell } from './NotificationBell';
 import logoSimandou from '@/assets/logo-simandou.svg';
 
 export const Header = () => {
@@ -22,6 +23,7 @@ export const Header = () => {
         </div>
         
         <div className="flex items-center gap-2">
+          <NotificationBell />
           <ThemeToggle />
           <LanguageSelector />
         </div>

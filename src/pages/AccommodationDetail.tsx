@@ -3,10 +3,13 @@ import { Header } from '@/components/Header';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ReviewCard } from '@/components/ReviewCard';
+import { ReviewForm } from '@/components/ReviewForm';
 import { mockAccommodations } from '@/data/mockData';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Star, MapPin, Sparkles, Wifi, UtensilsCrossed, Car, Shield, ChevronLeft as ChevronLeftIcon, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useReviews } from '@/hooks/useReviews';
 import modernBuilding from '@/assets/interior/modern-building-1.jpg';
 import hotelGarden from '@/assets/interior/hotel-garden-1.jpg';
 import hotelRoom from '@/assets/interior/hotel-room-1.jpg';
@@ -19,6 +22,7 @@ export default function AccommodationDetail() {
   const navigate = useNavigate();
   const accommodation = mockAccommodations.find(a => a.id === id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const { reviews, loading: reviewsLoading, createReview, markHelpful } = useReviews(id);
 
   if (!accommodation) {
     return (
@@ -231,6 +235,48 @@ export default function AccommodationDetail() {
                   🛡️ Paiement sécurisé par IA
                 </p>
               </Card>
+            </div>
+          </div>
+          
+          {/* Reviews Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold mb-6 text-foreground">Avis des clients</h2>
+            
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <ReviewForm 
+                accommodationId={id!} 
+                onSubmit={createReview}
+              />
+              
+              <div>
+                <div className="mb-4 flex items-center gap-4">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Star className="h-6 w-6 fill-primary text-primary" />
+                      <span className="text-3xl font-bold text-foreground">{accommodation.rating}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {reviews.length} avis
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              {reviewsLoading ? (
+                <p className="text-center text-muted-foreground">Chargement des avis...</p>
+              ) : reviews.length === 0 ? (
+                <p className="text-center text-muted-foreground">Aucun avis pour le moment. Soyez le premier à laisser un avis !</p>
+              ) : (
+                reviews.map((review) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    onHelpful={markHelpful}
+                  />
+                ))
+              )}
             </div>
           </div>
         </div>

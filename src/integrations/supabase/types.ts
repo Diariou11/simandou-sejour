@@ -14,7 +14,156 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      messages: {
+        Row: {
+          accommodation_id: string | null
+          content: string
+          conversation_id: string
+          created_at: string | null
+          id: string
+          read: boolean | null
+          receiver_id: string
+          sender_id: string
+        }
+        Insert: {
+          accommodation_id?: string | null
+          content: string
+          conversation_id: string
+          created_at?: string | null
+          id?: string
+          read?: boolean | null
+          receiver_id: string
+          sender_id: string
+        }
+        Update: {
+          accommodation_id?: string | null
+          content?: string
+          conversation_id?: string
+          created_at?: string | null
+          id?: string
+          read?: boolean | null
+          receiver_id?: string
+          sender_id?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          link: string | null
+          message: string
+          read: boolean | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          link?: string | null
+          message: string
+          read?: boolean | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          link?: string | null
+          message?: string
+          read?: boolean | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string | null
+          full_name: string | null
+          id: string
+          language: string | null
+          phone: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          language?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string | null
+          full_name?: string | null
+          id?: string
+          language?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          accommodation_id: string
+          comment: string
+          created_at: string | null
+          helpful_count: number | null
+          host_response: string | null
+          host_response_date: string | null
+          id: string
+          images: string[] | null
+          rating: number
+          title: string
+          updated_at: string | null
+          user_id: string
+          verified_stay: boolean | null
+        }
+        Insert: {
+          accommodation_id: string
+          comment: string
+          created_at?: string | null
+          helpful_count?: number | null
+          host_response?: string | null
+          host_response_date?: string | null
+          id?: string
+          images?: string[] | null
+          rating: number
+          title: string
+          updated_at?: string | null
+          user_id: string
+          verified_stay?: boolean | null
+        }
+        Update: {
+          accommodation_id?: string
+          comment?: string
+          created_at?: string | null
+          helpful_count?: number | null
+          host_response?: string | null
+          host_response_date?: string | null
+          id?: string
+          images?: string[] | null
+          rating?: number
+          title?: string
+          updated_at?: string | null
+          user_id?: string
+          verified_stay?: boolean | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
