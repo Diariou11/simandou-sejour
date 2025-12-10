@@ -14,33 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
+      message_groups: {
+        Row: {
+          created_at: string | null
+          created_by: string
+          id: string
+          members: string[]
+          name: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by: string
+          id?: string
+          members: string[]
+          name: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string
+          id?: string
+          members?: string[]
+          name?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       messages: {
         Row: {
           accommodation_id: string | null
+          attachments: string[] | null
           content: string
           conversation_id: string
           created_at: string | null
+          group_id: string | null
           id: string
+          is_typing: boolean | null
+          message_type: string | null
           read: boolean | null
           receiver_id: string
           sender_id: string
         }
         Insert: {
           accommodation_id?: string | null
+          attachments?: string[] | null
           content: string
           conversation_id: string
           created_at?: string | null
+          group_id?: string | null
           id?: string
+          is_typing?: boolean | null
+          message_type?: string | null
           read?: boolean | null
           receiver_id: string
           sender_id: string
         }
         Update: {
           accommodation_id?: string | null
+          attachments?: string[] | null
           content?: string
           conversation_id?: string
           created_at?: string | null
+          group_id?: string | null
           id?: string
+          is_typing?: boolean | null
+          message_type?: string | null
           read?: boolean | null
           receiver_id?: string
           sender_id?: string
@@ -83,34 +122,46 @@ export type Database = {
       profiles: {
         Row: {
           avatar_url: string | null
+          badges: string[] | null
           bio: string | null
           created_at: string | null
           full_name: string | null
           id: string
           language: string | null
           phone: string | null
+          preferences: Json | null
+          reward_points: number | null
+          stay_history: Json | null
           updated_at: string | null
           user_id: string
         }
         Insert: {
           avatar_url?: string | null
+          badges?: string[] | null
           bio?: string | null
           created_at?: string | null
           full_name?: string | null
           id?: string
           language?: string | null
           phone?: string | null
+          preferences?: Json | null
+          reward_points?: number | null
+          stay_history?: Json | null
           updated_at?: string | null
           user_id: string
         }
         Update: {
           avatar_url?: string | null
+          badges?: string[] | null
           bio?: string | null
           created_at?: string | null
           full_name?: string | null
           id?: string
           language?: string | null
           phone?: string | null
+          preferences?: Json | null
+          reward_points?: number | null
+          stay_history?: Json | null
           updated_at?: string | null
           user_id?: string
         }
@@ -164,15 +215,77 @@ export type Database = {
         }
         Relationships: []
       }
+      typing_indicators: {
+        Row: {
+          conversation_id: string
+          id: string
+          is_typing: boolean | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          conversation_id: string
+          id?: string
+          is_typing?: boolean | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          conversation_id?: string
+          id?: string
+          is_typing?: boolean | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_admin_statistics: {
+        Args: never
+        Returns: {
+          average_rating: number
+          messages_this_week: number
+          reviews_this_week: number
+          total_messages: number
+          total_reviews: number
+          total_users: number
+        }[]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -299,6 +412,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const

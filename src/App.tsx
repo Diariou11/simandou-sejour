@@ -45,6 +45,7 @@ import HowItWorks from "./pages/HowItWorks";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,7 @@ const App = () => (
           <Route path="/host-reviews" element={<HostReviewsManagement />} />
           <Route path="/host-profile" element={<HostProfile />} />
           <Route path="/host-settings" element={<HostSettings />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
             
             {/* Client Additional Routes */}
             <Route path="/client-favorites" element={<ClientFavorites />} />
