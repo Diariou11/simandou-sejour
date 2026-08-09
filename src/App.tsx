@@ -103,7 +103,11 @@ const App = () => (
           <Route path="/client-location" element={<ClientLocation />} />
             
             {/* Institutional Pages */}
+            {/* OAuth consent for agent integrations (MCP) */}
+            <Route path="/.lovable/oauth/consent" element={<OAuthConsent />} />
+
             <Route path="/about" element={<About />} />
+
             <Route path="/contact" element={<Contact />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/terms" element={<Terms />} />
