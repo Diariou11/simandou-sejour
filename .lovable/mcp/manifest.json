@@ -1,0 +1,194 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://lnntdyhrdlaxoyhrriox.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "simandou-sejour",
+      "version": "0.1.0",
+      "title": "simandou-sejour"
+    },
+    "tools": [
+      {
+        "name": "search_accommodations",
+        "title": "Rechercher des hébergements",
+        "description": "Rechercher les hébergements du catalogue Simandou Séjour par ville, région, type ou prix maximum.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "Texte libre (nom, ville, région, équipement)."
+            },
+            "city": {
+              "type": "string",
+              "description": "Ville, ex. Conakry."
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "hotel",
+                "motel",
+                "auberge",
+                "residence"
+              ],
+              "description": "Type d'hébergement."
+            },
+            "maxPrice": {
+              "type": "number",
+              "description": "Prix maximum par nuit en GNF."
+            },
+            "limit": {
+              "type": "number",
+              "description": "Nombre maximum de résultats (défaut 10)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_accommodation",
+        "title": "Détail d'un hébergement",
+        "description": "Obtenir la fiche détaillée d'un hébergement de Simandou Séjour à partir de son identifiant.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Identifiant de l'hébergement, ex. \"1\"."
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_my_profile",
+        "title": "Mon profil",
+        "description": "Récupérer le profil Simandou Séjour de l'utilisateur connecté (nom, langue, points, préférences).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_notifications",
+        "title": "Mes notifications",
+        "description": "Lister les notifications de l'utilisateur connecté, les plus récentes d'abord.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "unreadOnly": {
+              "type": "boolean",
+              "description": "Ne renvoyer que les notifications non lues."
+            },
+            "limit": {
+              "type": "number",
+              "description": "Nombre maximum de notifications (défaut 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_my_reviews",
+        "title": "Mes avis",
+        "description": "Lister les avis publiés par l'utilisateur connecté sur les hébergements.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "number",
+              "description": "Nombre maximum d'avis (défaut 20)."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "create_review",
+        "title": "Publier un avis",
+        "description": "Publier un avis (titre, commentaire, note sur 5) sur un hébergement au nom de l'utilisateur connecté.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "accommodationId": {
+              "type": "string",
+              "description": "Identifiant de l'hébergement, ex. \"1\"."
+            },
+            "title": {
+              "type": "string",
+              "description": "Titre court de l'avis."
+            },
+            "comment": {
+              "type": "string",
+              "description": "Contenu de l'avis."
+            },
+            "rating": {
+              "type": "number",
+              "description": "Note de 1 à 5."
+            }
+          },
+          "required": [
+            "accommodationId",
+            "title",
+            "comment",
+            "rating"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
